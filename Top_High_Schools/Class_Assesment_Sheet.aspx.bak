@@ -1,0 +1,256 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Class_Assesment_Sheet.aspx.vb" Inherits="Top_High_Schools.Class_Assesment_Sheet" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <link href="plugins/fontawesome-free/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+
+     <script>
+         function sum() {
+             var txt1 = document.getElementById('<%= txtexe1.ClientID %>').value;
+             var txt2 = document.getElementById('<%= txtexe2.ClientID %>').value;
+             var txt3 = document.getElementById('<%= txtexe3.ClientID %>').value;
+             var txt4 = document.getElementById('<%= txtexe4.ClientID %>').value;
+             var result = parseFloat(txt1) + parseFloat(txt2) + parseFloat(txt3) + parseFloat(txt4);
+            if (!isNaN(result)) {
+                document.getElementById('<%= txttotals.ClientID %>').value = result;
+             }
+         }
+     </script>
+
+<%--     <script>
+         function addsum() {
+            
+             var txt9 = document.getElementById('<%= txtexam100.ClientID %>').value;
+             var mytxt = document.getElementById('<%= txt2.ClientID %>').value;
+             var myresult = parseFloat(txt9) / mytxt;
+            if (!isNaN(result)) {
+                document.getElementById('<%= txtexam50.ClientID %>').value = myresult;
+             }
+         }
+     </script>
+
+     <script>
+         function myFunction(txt) {
+
+             var txt12 = document.getElementById('txttot50').value;
+             var txt13 = document.getElementById('txtexam50').value;
+             var myaddresult = parseFloat(txt12) + parseFloat(txt13);
+            if (!isNaN(result)) {
+                document.getElementById('txttot100').value = myaddresult;
+             }
+         }
+     </script>--%>
+       
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h4 mb-0 text-gray-800">Class Assesment Sheet</h4>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-info">
+                <div class="card-header">
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <div class="form-group row">
+
+                        <div class="col-sm-4">
+                            <asp:Label ID="Label1" runat="server" class="col-form-label" Text="Class"></asp:Label>
+                            <dx:ASPxComboBox ID="ddlClass" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -" AutoPostBack="True" requide="true"></dx:ASPxComboBox>
+                            <asp:TextBox ID="txtclassid" runat="server" Visible="false"></asp:TextBox>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <asp:Label ID="Label2" runat="server" class="col-form-label" Text="Student"></asp:Label>
+                            <dx:ASPxComboBox ID="ddlstudent" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -" AutoPostBack="True" requide="true"></dx:ASPxComboBox>
+                            <asp:TextBox ID="txtstsudid" runat="server" Visible="false"></asp:TextBox>
+                        </div>
+
+                       
+
+                    </div>
+
+                    <asp:TextBox runat="server" ID="txtproclassid" Visible="false"></asp:TextBox>
+                </div>
+
+                 <!-- /.card-body -->
+                <div class="card-footer">
+                    <asp:Button ID="btnsearch" runat="server" Text="Search" class="btn btn-success" style="float:right"/>
+                </div>
+                <!-- /.card-footer -->
+
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <!-- Input rows -->
+    <!--Row with two equal columns-->
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card card-info">
+                <div class="card-header">
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <div class="form-group row">
+
+                        <div class="col-sm-2">
+                            <asp:Label ID="Label7" runat="server" class="col-form-label" Text="Subject"></asp:Label>
+                            <dx:ASPxComboBox ID="ddlcourse" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -" AutoPostBack="True" requide="true"></dx:ASPxComboBox>
+                            <asp:TextBox ID="txtcourseid" runat="server" Visible="false"></asp:TextBox>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <asp:Label ID="Label10" runat="server" class="col-form-label" Text="Exercise 10%"></asp:Label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtexe1" Text="0" required="true" onkeyup="sum()"></asp:TextBox>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <asp:Label ID="Label11" runat="server" class="col-form-label" Text="Exercise 10%"></asp:Label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtexe2" Text="0" required="true" onkeyup="sum()"></asp:TextBox>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <asp:Label ID="Label12" runat="server" class="col-form-label" Text="Exercise 10%"></asp:Label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtexe3" Text="0" required="true" onkeyup="sum()"></asp:TextBox>
+                        </div>
+
+                         <div class="col-sm-2">
+                            <asp:Label ID="Label3" runat="server" class="col-form-label" Text="Exercise 10%"></asp:Label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtexe4" Text="0" required="true" onkeyup="sum()"></asp:TextBox>
+                        </div>
+
+                         <div class="col-sm-2">
+                            <asp:Label ID="Label4" runat="server" class="col-form-label" Text="Total 40%"></asp:Label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txttotals" Text="0" required="true" ReadOnly="true" Style="background-color:white"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <br />
+
+                </div>
+                <div>
+                   
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <asp:Button ID="btn_Gen" runat="server" Text="Process" class="btn btn-success" />
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <asp:TextBox ID="txtusers" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtlocation" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtlinkcode" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtgrade" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtremark" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txt2" runat="server" Text ="2" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtyear" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtterm" runat="server" Text ="2" Visible="false"></asp:TextBox>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card card-info">
+                <div class="card-header">
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary" id="actstu">
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Subject</th>
+                                    <th>Exercise 10%</th>
+                                    <th>Exercise 10%</th>
+                                    <th>Exercise 10%</th>
+                                    <th>Exercise 10%</th>
+                                    <th>Total 40%</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="RepeaterDB" runat="server">
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="studcode" runat="server" Text='<%# Eval("student_name") %>' />
+                                                <asp:Label ID="lblID" runat="server" Text='<%# Eval("id") %>' />
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="studname" runat="server" Text='<%# Eval("subject")%>' /></td>
+                                            <td>
+                                                <asp:Label ID="Label19" runat="server" Text='<%# Eval("class_exe_1") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="Label20" runat="server" Text='<%# Eval("class_exe_2")%>' /></td>
+                                            <td>
+                                                <asp:Label ID="Label21" runat="server" Text='<%# Eval("class_exe_3") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="Label22" runat="server" Text='<%# Eval("class_exe_4")%>' /></td>
+                                            <td>
+                                                <asp:Label ID="Label23" runat="server" Text='<%# Eval("class_total") %>' /></td>
+                                             <td>
+                                        <asp:ImageButton ID="btnedit" Text="Edit" runat="server" OnClick="GetValue" Style="padding: 5px" ImageUrl="~/img/edit-11-24.png" />
+                                    </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                    
+            </div>
+
+        </div>
+    </div>
+
+     <asp:TextBox ID="txtID" runat="server" Visible="False"></asp:TextBox>
+</asp:Content>

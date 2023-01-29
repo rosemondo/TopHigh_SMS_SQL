@@ -1,0 +1,279 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Class_Activities.aspx.vb" Inherits="Top_High_Schools.Class_Activities" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-info">
+                <div class="card-header">
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        
+                        <div class="col-sm-6">
+
+                            <asp:Label ID="Label3" runat="server" Text="Type"></asp:Label>
+                            <dx:ASPxComboBox ID="ddltype" runat="server" CssClass="form-control" NullText="- Select -">
+                                <Items>
+                                    <dx:ListEditItem Text="Class & Home Work" Value="Class & Home Work"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="Class Assessment" Value="Class Assessment"></dx:ListEditItem>
+                                    <dx:ListEditItem Text="Terminal Reports" Value="Terminal Reports"></dx:ListEditItem>
+                                </Items>
+                            </dx:ASPxComboBox>
+
+
+                            <br />
+
+                            <asp:FileUpload ID="fuFileUploader" runat="server" />
+                            <asp:Button ID="btnUpload" runat="server" Text="Upload" CssClass="btn btn-success" OnClick="Upload" />
+
+                        </div>
+
+                        <div class="col-sm-4">
+                            <asp:Label ID="Label2" runat="server" Text="Class"></asp:Label>
+                            <dx:ASPxComboBox ID="ddlClass" runat="server" CssClass="form-control"></dx:ASPxComboBox>
+                        </div>
+
+                        <asp:TextBox ID="txtclassid" runat="server" Visible="false"></asp:TextBox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Class & Home Work</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <asp:GridView ID="dgvhw" runat="server" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" DataKeyNames="id">
+
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <AlternatingRowStyle BackColor="White" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="Download">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" Text='<%# Eval("item_name") %>' OnClick="LinkButton1_Click"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Delete">
+                                <HeaderStyle Width="100px" />
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="imgDelete" runat="server" CommandName="Delete" ImageUrl="~/img/delete-24.png" OnClientClick="return confirm('Are you sure you want to delete selected record ?')" ToolTip="Delete" CausesValidation="false" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:BoundField DataField="cw_date" HeaderText="Date" DataFormatString="{0: yyyy-MM-dd}">
+                                <HeaderStyle Width="150px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="item_name" HeaderText="File Name" />
+                            <asp:BoundField DataField="class_type" HeaderText="Class">
+                                <HeaderStyle Width="150px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="file_path" HeaderText="File Location" />
+                        </Columns>
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                    </asp:GridView>
+
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                </div>
+                <!-- /.card-footer -->
+            </div>
+
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Class Assessment</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <asp:GridView ID="dgvassessment" runat="server" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" DataKeyNames="id">
+
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <AlternatingRowStyle BackColor="White" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="Download">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" Text='<%# Eval("item_name") %>' OnClick="LinkButton_Click"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Delete">
+                                <HeaderStyle Width="100px" />
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="imgDelete" runat="server" CommandName="Delete" ImageUrl="~/img/delete-24.png" OnClientClick="return confirm('Are you sure you want to delete selected record ?')" ToolTip="Delete" CausesValidation="false" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:BoundField DataField="cw_date" HeaderText="Date" DataFormatString="{0: yyyy-MM-dd}">
+                                <HeaderStyle Width="150px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="item_name" HeaderText="File Name" />
+                            <asp:BoundField DataField="class_type" HeaderText="Class">
+                                <HeaderStyle Width="150px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="file_path" HeaderText="File Location" />
+                        </Columns>
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                    </asp:GridView>
+
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                </div>
+                <!-- /.card-footer -->
+            </div>
+
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Terminal Reports</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <asp:GridView ID="dgvreport" runat="server" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" DataKeyNames="id" EmptyDataText="No Data">
+
+                        <EditRowStyle BackColor="#2461BF" />
+                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+
+                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                        <AlternatingRowStyle BackColor="White" />
+                        <Columns>
+                            <asp:TemplateField HeaderText="Download">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" Text='<%# Eval("item_name") %>' OnClick="LinkButtons_Click"></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Delete">
+                                <HeaderStyle Width="100px" />
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="imgDelete" runat="server" CommandName="Delete" ImageUrl="~/img/delete-24.png" OnClientClick="return confirm('Are you sure you want to delete selected record ?')" ToolTip="Delete" CausesValidation="false" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:BoundField DataField="cw_date" HeaderText="Date" DataFormatString="{0: yyyy-MM-dd}">
+                                <HeaderStyle Width="150px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="item_name" HeaderText="File Name" />
+                            <asp:BoundField DataField="class_type" HeaderText="Class">
+                                <HeaderStyle Width="150px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="file_path" HeaderText="File Location" />
+                        </Columns>
+                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#EFF3FB" />
+                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                    </asp:GridView>
+
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                </div>
+                <!-- /.card-footer -->
+            </div>
+
+        </div>
+    </div>
+
+
+    <div>
+        <asp:Literal ID="ltEmbed" runat="server" />
+    </div>
+
+    <asp:TextBox ID="txtdate" runat="server" TextMode="Date" Visible="false"></asp:TextBox>
+    <asp:TextBox ID="txtID" runat="server" Visible="false"></asp:TextBox>
+
+    <br />
+
+
+</asp:Content>

@@ -1,0 +1,93 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Edit_leatners_Current_Class.aspx.vb" Inherits="Top_High_Schools.Edit_leatners_Current_Class" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 34px !important;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ccc !important;
+            border-radius: 0px !important;
+        }
+    </style>
+
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h4 mb-0 text-gray-800">Update Learner's Class</h4>
+
+    </div>
+
+    <!-- Input rows -->
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Update Learner's Class</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Student</label>
+                        <div class="col-sm-4">
+                            <dx:ASPxComboBox ID="ddlStudent" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -" AutoPostBack="True" requide="true"></dx:ASPxComboBox>
+                        </div>
+                        <label for="inputEmail3" class="col-sm-1 col-form-label">Class</label>
+                        <div class="col-sm-4">
+                           <dx:ASPxComboBox ID="ddlclass" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -" AutoPostBack="True" requide="true"></dx:ASPxComboBox>
+                        </div>
+                        <asp:TextBox runat="server" ID="txtclassid" Visible="false"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="txtstudid" Visible="false"></asp:TextBox>
+                    </div>
+                  
+                    <hr />
+
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <asp:Button ID="btnsave" runat="server" Text="Update" class="btn btn-primary" OnClick="Update_Class"/>
+                </div>
+                <!-- /.card-footer -->
+            </div>
+           
+        </div>
+
+    </div>
+
+    <br />
+
+</asp:Content>

@@ -1,0 +1,170 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Active_Students.aspx.vb" Inherits="Top_High_Schools.Active_Students" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <link href="plugins/fontawesome-free/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h4 mb-0 text-gray-800">Student Activation</h4>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-info">
+                <div class="card-header">
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <div class="form-group row">
+
+                        <div class="col-sm-6">
+                            <asp:Label ID="Label1" runat="server" class="col-form-label" Text="Class"></asp:Label>
+                            <dx:ASPxComboBox ID="ddlClass" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -" AutoPostBack="True" requide="true"></dx:ASPxComboBox>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <asp:Label ID="Label2" runat="server" class="col-form-label" Text="Date"></asp:Label>
+                            <asp:TextBox ID="txtdate" runat="server" CssClass="form-control" TextMode="Date" required="true"></asp:TextBox>
+                        </div>
+                     
+                        <asp:TextBox ID="txtclassid" runat="server" Visible="false"></asp:TextBox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <!-- Input rows -->
+    <!--Row with two equal columns-->
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card card-info">
+                <div class="card-header">
+
+                     <asp:Button ID="btnapply" runat="server" Text="Apply" class="btn btn-success" OnClick="OnSave" style="float:right"/>
+
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="text-primary" id="actstu">
+                                <tr>
+                                    <th>
+                                        <asp:CheckBox ID="chkAll" runat="server" AutoPostBack="true"
+                                            OnCheckedChanged="Check_UnCheckAll" />
+                                    </th>
+                                    <th>ID</th>
+                                    <th>Student Code</th>
+                                    <th>Student</th>
+                                    <th>Active</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="RepeaterDB" runat="server">
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:CheckBox ID="checkboxId" runat="server" AutoPostBack="true"
+                                                    OnCheckedChanged="OnRowCheckedUnchecked" /></td>
+                                            <td>
+                                                <asp:Label ID="tbid" runat="server" Text='<%# Eval("id") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="studcode" runat="server" Text='<%# Eval("stud_id") %>' /></td>
+                                            <td>
+                                                <asp:Label ID="studname" runat="server" Text='<%# Eval("student_name")%>' /></td>
+                                            <td>
+                                                <dx:ASPxComboBox ID="ddlactive" runat="server" ValueType="System.String" NullText=" - Select -">
+                                                    <Items>
+                                                        <dx:ListEditItem Text="Active" Value="Active" />
+                                                        <dx:ListEditItem Text="In Active" Value="In Active" />
+                                                        <dx:ListEditItem Text="Dormant" Value="Dormant" />
+                                                        <dx:ListEditItem Text="Graduated" Value="Graduated" />
+                                                    </Items>
+                                                </dx:ASPxComboBox>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div>
+                    <script src="lib/jquery/jquery.min.js"></script>
+                    <script src="plugins/datatables/jquery.dataTables.js"></script>
+                    <script src="js/dataTables.semanticui.min.js"></script>
+                    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+                    <script src="js/responsive.semanticui.min.js"></script>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#actstu').DataTable({
+                                responsive: {
+                                    details: {
+                                        display: $.fn.dataTable.Responsive.display.modal({
+                                            header: function (row) {
+                                                var data = row.data();
+                                                return 'Details for ' + data[0] + ' ' + data[1];
+                                            }
+                                        }),
+                                        renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                                            tableClass: 'ui table'
+                                        })
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <asp:Button ID="btn_Gen" runat="server" Text="Apply" class="btn btn-success" OnClick="OnSave" />
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <asp:TextBox ID="txtusers" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtlocation" runat="server" Visible="false"></asp:TextBox>
+
+        </div>
+    </div>
+
+</asp:Content>

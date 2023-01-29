@@ -1,0 +1,253 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Edit_Fees_Bills.aspx.vb" Inherits="Top_High_Schools.Edit_Fees_Bills" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+
+    <link href="plugins/fontawesome-free/css/fontawesome.min.css" rel="stylesheet" />
+     <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+         .select2-container .select2-selection--single {
+        height: 34px !important;
+    }
+ 
+    .select2-container--default .select2-selection--single {
+        border: 1px solid #ccc !important;
+        border-radius: 0px !important;
+    }
+
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.select2').select2();
+            $('.select2').on('change', function () {
+                $('[id*=hfCustomerId]').val($(this).val());
+            });
+        });
+    </script>
+
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h4 mb-0 text-gray-800">Fees & Bills Settings</h4>
+        
+    </div>
+
+    <!-- Input rows -->
+
+    <div class="row">
+        <div class="col-md-10">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Add Fees & Bills</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Class Type</label>
+                        <div class="col-sm-8">
+                            <dx:ASPxComboBox ID="ddlClass" required="true" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -" AutoPostBack="True"></dx:ASPxComboBox>
+                            </div>
+                        <asp:TextBox runat="server" ID="txtclassid" Visible ="false"></asp:TextBox>
+                        <asp:TextBox ID="txtclasid" runat="server" Visible ="false" AutoPostBack="True"></asp:TextBox>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Tuition Fee</label>
+                        <div class="col-sm-8">
+                            <asp:TextBox runat="server" class="form-control" ID="txttuition" Text="0"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Admission Fee</label>
+                        <div class="col-sm-8">
+                            <asp:TextBox runat="server" class="form-control" ID="txtadmission" Text="0"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Canteen Fee</label>
+                        <div class="col-sm-8">
+                            <asp:TextBox runat="server" class="form-control" ID="txtcanteen" Text="0"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Bus Fee</label>
+                        <div class="col-sm-8">
+                            <asp:TextBox runat="server" TextMode="Number" class="form-control" ID="txtbusfee" Text="0"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">First AID</label>
+                        <div class="col-sm-8">
+                            <asp:TextBox runat="server" class="form-control" ID="txtfirstaid" Text="0"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">P.T.A</label>
+                        <div class="col-sm-8">
+                            <asp:TextBox runat="server" class="form-control" ID="txtpta" Text="0"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Others</label>
+                        <div class="col-sm-8">
+                            <asp:TextBox runat="server" class="form-control" ID="txtothers" Text="0"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                </div>
+                 
+                <!-- /.card-body -->
+                <div class="card-footer">
+                     <asp:Button ID="btnsave" runat="server" Text="Save" class="btn btn-primary" />
+                    <asp:Button ID="btncancel" runat="server" Text="Cancel" class="btn btn-success float-right" />
+                </div>
+                <!-- /.card-footer -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <br />
+
+    <!--Row with two equal columns-->
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Fees / Bills List</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <div>
+
+                        <asp:Repeater ID="rptFeeBill" runat="server">
+                            <HeaderTemplate>
+                                <table id="studbills" class="table table-bordered table-striped" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Tuition Fee</th>
+                                            <th scope="col">Admission Fee</th>
+                                            <th scope="col">Canteen Fee</th>
+                                            <th scope="col">Bus Fee</th>
+                                            <th scope="col">First AID</th>
+                                            <th scope="col">P.T.A</th>
+                                            <th scope="col">Others</th>
+                                            <th scope="col">Class Type</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="lblID" runat="server" Text='<%# Eval("ID") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="lblTuition" runat="server" Text='<%# Eval("Tuition Fee") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="lblAdmission" runat="server" Text='<%# Eval("Admission Fee") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="lblCanteen" runat="server" Text='<%# Eval("Canteen Fee") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="lblBuss" runat="server" Text='<%# Eval("Bus Fee") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="lblFirstAid" runat="server" Text='<%# Eval("First AID") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="lblPTA" runat="server" Text='<%# Eval("PTA") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="lblOthers" runat="server" Text='<%# Eval("Others") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="lblClass" runat="server" Text='<%# Eval("Class Type") %>' /></td>
+                                    <td>
+                                        <asp:ImageButton ID="btnedit" Text="Edit" runat="server" OnClick="GetValue" Style="padding: 5px" ImageUrl="~/img/edit-11-24.png" />
+                                        <asp:ImageButton ID="btndelete" runat="server" OnClick="GetDelete" Text="Delete" OnClientClick="return confirm('Are You Sure to Delete?')" Style="padding: 5px" ImageUrl="~/img/delete-24.png" />
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </tbody> </table>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                        <asp:TextBox ID="txtID" runat="server" Visible="False"></asp:TextBox>
+                    </div>
+
+                </div>
+                <div>
+                    <script src="lib/jquery/jquery.min.js"></script>
+                    <script src="plugins/datatables/jquery.dataTables.js"></script>
+                    <script src="js/dataTables.semanticui.min.js"></script>
+                    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+                    <script src="js/responsive.semanticui.min.js"></script>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#studbills').DataTable({
+                                responsive: {
+                                    details: {
+                                        display: $.fn.dataTable.Responsive.display.modal({
+                                            header: function (row) {
+                                                var data = row.data();
+                                                return 'Details for ' + data[0] + ' ' + data[1];
+                                            }
+                                        }),
+                                        renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                                            tableClass: 'ui table'
+                                        })
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            
+        </div>
+
+    </div>
+
+    <br />
+
+
+</asp:Content>

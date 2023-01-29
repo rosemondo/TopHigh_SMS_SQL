@@ -1,0 +1,478 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Student_Report_Card.aspx.vb" Inherits="Top_High_Schools.Student_Report_Card" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <link href="plugins/fontawesome-free/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .capitalize {
+            text-transform: capitalize;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function printPageArea(areaID) {
+            var printContent = document.getElementById(areaID);
+            var WinPrint = window.open('', '', 'width=1000,height=1000');
+            WinPrint.document.write(printContent.innerHTML);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+            WinPrint.close();
+        }
+    </script>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Report</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group row">
+
+
+                        <div class="col-sm-6">
+                            <label for="inputEmail3">Learner</label>
+                            <dx:ASPxComboBox ID="ddlstudent" runat="server" CssClass="form-control" NullText="- Select -" AutoPostBack ="true">
+                            </dx:ASPxComboBox>
+                            <asp:TextBox ID="txtclass" Text="0" runat="server" Visible="false"></asp:TextBox>
+                            <asp:TextBox ID="txtfees" Text="0" runat="server" Visible="false"></asp:TextBox>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="inputEmail3">Class Teacher</label>
+                            <dx:ASPxComboBox ID="ddlteacher" runat="server" CssClass="form-control" NullText="- Select -">
+                            </dx:ASPxComboBox>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+
+                        <div class="col-sm-6">
+                            <label for="inputEmail3">Vacation Date</label>
+                            <asp:TextBox ID="txtvacadate" CssClass="form-control" runat="server" TextMode="Date" required="true"></asp:TextBox>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="inputEmail3">Re-Open Date</label>
+                            <asp:TextBox ID="txtreopen" CssClass="form-control" runat="server" TextMode="Date" required="true"></asp:TextBox>
+                        </div>
+                    </div>
+
+
+                    <hr />
+
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <asp:Button ID="btnprocess" runat="server" Text="Process" class="btn btn-success" Style="float: right" />
+                </div>
+                <!-- /.card-footer -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <asp:Button ID="Button2" runat="server" Text="Print" Class="btn btn-primary" OnClientClick="printPageArea('printableArea')" Style="float: right" />
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <div id="printableArea" style="background-color: #FFFFFF">
+
+                    <div class="table-responsive">
+
+                            <asp:Repeater ID="rptReportMain" runat="server" OnItemDataBound="OnItemDataBound">
+
+
+                                <ItemTemplate>
+
+
+                                    <table id="students" class="table table-bordered table-striped" border="0" cellspacing="0" width="100%">
+
+                                        <thead>
+
+                                            <tr>
+                                                <th colspan="7" style="text-align: center" class="auto-style5">
+
+                                                    <table align="center" class="auto-style1" border="0" cellspacing="2" style="border-width: thin">
+
+                                                        <tr>
+                                                            <td rowspan="4">
+                                                                <asp:Image ID="imglogo" runat="server" Height="100px" Width="100px" class='roundimage center-img' ImageUrl="~/images/capslogo.jpeg" />
+                                                            </td>
+                                                            <td align="center">
+                                                                <asp:Label ID="lblcompname" runat="server" Text="" Font-Bold="True" Font-Size="large" Style="padding: 15px"></asp:Label></td>
+                                                            <td rowspan="4">
+                                                                <asp:Image ID="imgstudpic" runat="server" Height="100px" Width="100px" class='roundimage center-img' />
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td align="center">
+                                                                <asp:Label ID="lbladress" runat="server" Text="" Font-Bold="True" Font-Size="large" Style="padding: 15px"></asp:Label></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td align="center">
+                                                                <asp:Label ID="lblphone" runat="server" Text="" Font-Bold="True" Font-Size="large" Style="padding: 15px"></asp:Label></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td align="center">
+                                                                <asp:Label ID="lblonline" runat="server" Text="" Font-Bold="True" Font-Size="large" Style="padding: 15px"></asp:Label></td>
+                                                        </tr>
+
+                                                    </table>
+                                                </th>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="7" style="text-align: center" class="auto-style5">
+                                                    <hr style="border: thin dotted #000000" />
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="7" style="text-align: center" class="auto-style5"></td>
+                                            </tr>
+
+                                            <th colspan="5" align="left">Learners Name:
+                                            <asp:Label ID="lbllearners" runat="server" Text='<%# Eval("student_name") %>' />
+                                                <asp:HiddenField ID="hfCustomerId" runat="server" Value='<%# Eval("student_name") %>' />
+                                                <asp:HiddenField ID="hfacayear" runat="server" Value='<%# Eval("aca_year") %>' />
+                                                <asp:HiddenField ID="hfacaterm" runat="server" Value='<%# Eval("aca_term") %>' />
+                                                <asp:TextBox ID="txtid" runat="server" Visible="false"></asp:TextBox>
+                                                <td colspan="2"></td>
+                                            </th>
+
+                                            <tr>
+                                                <td colspan="5">
+                                                    <asp:Label ID="lblclass" runat="server" Text="" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                    <asp:Label ID="Label3" runat="server" Text="Age :" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                    <asp:Label ID="lblage" runat="server" Text="" Font-Size="Small" Style="padding: 5px"></asp:Label>
+                                                    <asp:Label ID="Label9" runat="server" Text="No. on Roll :" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                    <asp:Label ID="lblroll" runat="server" Text="" Font-Size="Small" Style="padding: 5px"></asp:Label>
+                                                </td>
+                                                <td colspan="2"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="5">
+                                                    <asp:Label ID="Label5" runat="server" Text="Academic Year :" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                    <asp:Label ID="lblacayear" runat="server" Text="" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                    <asp:Label ID="Label7" runat="server" Text="Academic Term :" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                    <asp:Label ID="lblacaterm" runat="server" Text="" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                </td>
+                                                <td colspan="5">
+                                                    <asp:Label ID="Label1" runat="server" Text="Class Position :" Font-Size="Medium" Font-Bold="true" Style="padding: 15px"></asp:Label>
+                                                    <asp:Label ID="lblposition" runat="server" Text='<%# Eval("rank_str") %>' Font-Size="Medium" Font-Bold="true" Style="padding: 15px"></asp:Label>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="5">
+                                                    <asp:Label ID="Label2" runat="server" Text="Class Teacher :" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                    <asp:Label ID="lblclassteacher" runat="server" Text="" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                </td>
+                                                <td colspan="5"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="5">
+                                                    <asp:Label ID="Label4" runat="server" Text="Vacation Date :" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                    <asp:Label ID="lblvacadate" runat="server" Text="" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                    <asp:Label ID="Label10" runat="server" Text="Re-Open Date :" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                    <asp:Label ID="lblreopendate" runat="server" Text="" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                </td>
+                                                <td colspan="5"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="7">
+                                                    <hr style="border: thin dotted #000000" />
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="7" style="text-align: center" class="auto-style5">
+                                                    <asp:Label ID="Label11" runat="server" Text="LEARNER'S TERMINAL REPORT" Font-Bold="True" Font-Underline="true" Font-Size="large" Style="padding: 15px"></asp:Label>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="7">
+                                                    <hr style="border: thin dotted #000000" />
+                                                </td>
+                                            </tr>
+
+                                            <tr style="border: thin">
+                                                <th scope="col" align="left" style="font-size: small">Subject</th>
+                                                <th scope="col" align="left" style="font-size: small">Class Score 50%</th>
+                                                <th scope="col" align="left" style="font-size: small">Exams Score 50%</th>
+                                                <th scope="col" align="left" style="font-size: small">Total 100 (%)</th>
+                                                <th scope="col" align="left" style="font-size: small">Grade</th>
+                                                <th scope="col" align="left" style="font-size: small">Subject Position</th>
+                                                <th scope="col" align="left" style="font-size: small">Remarks</th>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="7">
+                                                    <hr style="border: thin dotted #000000" />
+                                                </td>
+                                            </tr>
+
+                                        </thead>
+
+
+                                        <asp:Repeater ID="rptRepoDetails" runat="server">
+
+                                            <ItemTemplate>
+                                                <tr style="border: thin">
+                                                    <td>
+                                                        <asp:Label ID="lblsubjects" runat="server" Text='<%# Eval("subject") %>' /></td>
+                                                    <td align="center">
+                                                        <asp:Label ID="lblclass" runat="server" Text='<%# Eval("class_wk_50") %>' /></td>
+                                                    <td align="center">
+                                                        <asp:Label ID="lblexems" runat="server" Text='<%# Eval("exams_50") %>' /></td>
+                                                    <td align="center">
+                                                        <asp:Label ID="lbltotalexamclass" runat="server" Text='<%# Eval("final_score_100") %>' /></td>
+                                                    <td align="center">
+                                                        <asp:Label ID="lblgrade" runat="server" Text='<%# Eval("grades") %>' /></td>
+                                                    <td align="center">
+                                                        <asp:Label ID="lblposition" runat="server" Text='<%# Eval("rank_str") %>' /></td>
+                                                    <td>
+                                                        <asp:Label ID="lblremarks" runat="server" Text='<%# Eval("remarks") %>' /></td>
+                                                </tr>
+
+                                            </ItemTemplate>
+
+
+                                        </asp:Repeater>
+
+                                        <tr>
+                                            <td colspan="7">
+                                                <hr style="border: thin dotted #000000" />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="7">
+
+                                                <table align="center" class="auto-style1" border="0" cellspacing="2" style="width: 100%;">
+
+                                                    <tr>
+                                                        <td>Grading of Term&#39;s Work;</td>
+                                                        <td>90 - 100</td>
+                                                        <td>&quot;A+&quot;</td>
+                                                        <td>DISTINCTION</td>
+                                                        <td>55 - 59</td>
+                                                        <td>&quot;C+&quot;</td>
+                                                        <td>CREDIT</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>80 - 89</td>
+                                                        <td>&quot;A&quot;</td>
+                                                        <td>EXCELLENT</td>
+                                                        <td>50 - 54</td>
+                                                        <td>&quot;C&quot;</td>
+                                                        <td>PASS</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>70 - 79</td>
+                                                        <td>&quot;B+&quot;</td>
+                                                        <td>VERY GOOD</td>
+                                                        <td>40 - 49</td>
+                                                        <td>&quot;D&quot;</td>
+                                                        <td>WEAK PASS</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>60 - 69</td>
+                                                        <td>&quot;B&quot;</td>
+                                                        <td>GOOD</td>
+                                                        <td>&lt;40</td>
+                                                        <td>&quot;F&quot;</td>
+                                                        <td>FAIL</td>
+                                                    </tr>
+
+                                                </table>
+
+
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="7">
+                                                <hr style="border: thin dotted #000000" />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="5">
+                                                <asp:Label ID="Label6" runat="server" Text="Attendance :" Font-Size="Small" Style="padding: 10px"></asp:Label>
+                                                <asp:Label ID="lblattendace" runat="server" Text="0" Font-Size="Small" Style="padding: 25px"></asp:Label>
+                                                <asp:Label ID="Label8" runat="server" Text="Out of  :" Font-Size="Small" Style="padding: 15px"></asp:Label>
+                                                <asp:Label ID="lbloutof" runat="server" Text="0" Font-Size="Small" Style="padding: 25px"></asp:Label>
+                                            </td>
+                                            <td colspan="5"></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="5">
+                                                <asp:Label ID="Label12" runat="server" Text="Class teacher's remarks :" Font-Size="Small" Style="padding: 10px"></asp:Label>
+                                                <asp:Label ID="lblclassteacherrec" runat="server" Text='<%# Eval("teachers_remarks") %>' Font-Size="Small" Style="padding: 25px"></asp:Label>
+                                            </td>
+                                            <td colspan="5"></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="5">
+                                                <asp:Label ID="Label13" runat="server" Text="Principal's remarks :" Font-Size="Small" Style="padding: 10px"></asp:Label>
+                                                <asp:Label ID="lblprincrec" runat="server" Text='<%# Eval("princ_remarks") %>' Font-Size="Small" Style="padding: 25px"></asp:Label>
+                                            </td>
+                                            <td colspan="5"></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="5">
+                                                <asp:Label ID="Label14" runat="server" Text="Next term school fees :" Font-Size="Small" Style="padding: 10px"></asp:Label>
+                                                <asp:Label ID="lblnextfees" runat="server" Text="0" Font-Size="Small" Style="padding: 25px"></asp:Label>
+                                                <asp:Label ID="Label16" runat="server" Text="Arreas of school fees :" Font-Size="Small" Style="padding: 10px"></asp:Label>
+                                                <asp:Label ID="lblarreas" runat="server" Text="0" Font-Size="Small" Style="padding: 25px"></asp:Label>
+                                            </td>
+                                            <td colspan="5"></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="5">
+                                                <asp:Label ID="Label15" runat="server" Text="School fees for next term school fees + Arrears = :" Font-Size="Small" Style="padding: 10px"></asp:Label>
+                                                <asp:Label ID="lblduefees" runat="server" Text="0" Font-Size="Small" Style="padding: 25px"></asp:Label>
+                                            </td>
+                                            <td colspan="5"></td>
+
+                                            <tr>
+                                                <td colspan="7" style="text-align: center" class="auto-style5"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="7" style="text-align: center" class="auto-style5">
+                                                    <hr style="border: thin dotted #000000" />
+                                                </td>
+                                            </tr>
+
+                                        </tr>
+
+                                        <div class="page-break"></div>
+                                </ItemTemplate>
+
+                                <FooterTemplate>
+                                    </tbody> </table>
+                                </FooterTemplate>
+
+                            </asp:Repeater>
+
+                        </div>
+
+                        <br />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div>
+                <script src="lib/jquery/jquery.min.js"></script>
+                <script src="plugins/datatables/jquery.dataTables.js"></script>
+                <script src="js/dataTables.semanticui.min.js"></script>
+                <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+                <script src="js/responsive.semanticui.min.js"></script>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#students').DataTable({
+                            responsive: {
+                                details: {
+                                    display: $.fn.dataTable.Responsive.display.modal({
+                                        header: function (row) {
+                                            var data = row.data();
+                                            return 'Details for ' + data[0] + ' ' + data[1];
+                                        }
+                                    }),
+                                    renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                                        tableClass: 'ui table'
+                                    })
+                                }
+                            }
+                        });
+                    });
+                </script>
+            </div>
+
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+
+
+
+    </div>
+
+
+    <br />
+
+    <asp:Button ID="Button1" runat="server" Text="Print" CssClass="form-control btn-primary" OnClientClick="printPageArea('printableArea')" />
+
+    <asp:Label ID="lblmyacayear" runat="server" Text="0" Font-Size="Small" Style="padding: 15px" Visible="false"></asp:Label>
+
+    <asp:Label ID="lblmyacaterm" runat="server" Text="0" Font-Size="Small" Style="padding: 15px" Visible="false"></asp:Label>
+</asp:Content>

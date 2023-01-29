@@ -1,0 +1,299 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Registration_Form.aspx.vb" Inherits="Top_High_Schools.Registration_Form" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .capitalize {
+            text-transform: capitalize;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function ShowImagePreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#<%=ImgPrv.ClientID%>').prop('src', e.target.result)
+                        .width(150)
+                        .height(150);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h4 mb-0 text-gray-800">Students & Parents Info</h4>
+        <a href="StudentList.aspx" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fa fa-list fa-sm text-white-50"></i>Student List</a>
+    </div>
+
+    <!-- Input rows -->
+    <!--Row with two equal columns-->
+    <div class="row">
+        <div class="col-md-8">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Student Form</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Name of Child</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" class="form-control capitalize" ID="txtnameofchild" required="true"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Date of Birth</label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Day</label>
+                        <div class="col-sm-4">
+                            <asp:TextBox runat="server" Type="numeric" CssClass="form-control" ID="txtday" required="true" Text="0"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Month</label>
+                        <div class="col-sm-4">
+                            <asp:TextBox runat="server" Type="numeric" CssClass="form-control" ID="txtmonth"  required="true" Text="0"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Year</label>
+                        <div class="col-sm-4">
+                            <asp:TextBox runat="server" Type="numeric" CssClass="form-control" ID="txtyear"  required="true" Text="0" AutoPostBack="true"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Gender</label>
+                        <div class="col-sm-10">
+                            <asp:RadioButton ID="rbomale" runat="server" Text="Male" TextAlign="Right" Style="padding: 5px" AutoPostBack="True" />
+                            <asp:RadioButton ID="rbofemale" runat="server" Text="Female" TextAlign="Right" Style="padding: 5px" AutoPostBack="True" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Age</label>
+                        <div class="col-sm-4">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtage"  required="true" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+
+            <div class="card card-info">
+                <div class="card-header">
+                    <h6 class="card-title">Student Photo</h6>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <fieldset style="width: 150px;">
+                        <div style="text-align: center;">
+                            <asp:Image ID="ImgPrv" Height="150" Width="150" runat="server" /><br />
+                            <asp:FileUpload ID="flupImage" runat="server" onchange="ShowImagePreview(this);" />
+
+               
+                        
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                </div>
+                <!-- /.card-footer -->
+
+            </div>
+
+        </div>
+
+
+    <div class="col-md-2">
+
+        <div class="card card-info">
+            <div class="card-header">
+                <h6 class="card-title">Take Photo</h6>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+
+            <div class="card-body">
+
+                <fieldset style="width: 150px;">
+                    <div style="text-align: center;">
+
+                        <!-- CSS -->
+                        <style>
+                            #my_camera {
+                                width: 150px;
+                                height: 150px;
+                                border: 1px solid black;
+                            }
+                        </style>
+
+                        <div id="my_camera"></div>
+                        <input type="button" value="Take Snapshot" onclick="take_snapshot()">
+
+                        <div id="results"></div>
+
+                        <!-- Webcam.min.js -->
+                        <script type="text/javascript" src="webcamjs/webcam.min.js"></script>
+
+                        <!-- Configure a few settings and attach camera -->
+                        <script language="JavaScript">
+                            Webcam.set({
+                                width: 150,
+                                height: 150,
+                                image_format: 'jpeg',
+                                jpeg_quality: 90
+                            });
+                            Webcam.attach('#my_camera');
+                        </script>
+                        <!-- A button for taking snaps -->
+
+                        <!-- Code to handle taking the snapshot and displaying it locally -->
+                        <script language="JavaScript">
+
+                            function take_snapshot() {
+
+                                // take snapshot and get image data
+                                Webcam.snap(function (data_uri) {
+                                    // display results in page
+                                    document.getElementById('results').innerHTML =
+                                        '<img src="' + data_uri + '"/>';
+                                });
+                            }
+                        </script>
+
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+            <!-- /.card-body -->
+            <div class="card-footer">
+            </div>
+            <!-- /.card-footer -->
+
+        </div>
+
+    </div>
+
+
+    </div>
+
+
+<br />
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Parent Form</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group row">
+                        
+                        <div class="col-sm-10">
+                            <label for="inputEmail3">Name of Father</label>
+                            <asp:TextBox runat="server" CssClass="form-control capitalize" ID="txtfathersname" ></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        
+                        <div class="col-sm-10">
+                            <label for="inputPassword3">Mothers Name</label>
+                            <asp:TextBox runat="server" CssClass="form-control capitalize" ID="txtmothersname" ></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        
+                        <div class="col-sm-6">
+                            <label for="inputPassword3">Address</label>
+                            <asp:TextBox runat="server" CssClass="form-control capitalize" ID="txtaddress" ></asp:TextBox>
+                        </div>
+                   
+                        <div class="col-sm-4">
+                            <label for="inputPassword3">Mobile #</label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtmobile"></asp:TextBox>
+                        </div>
+                    </div>
+              
+                    <div class="form-group row">
+                        
+                        <div class="col-sm-3">
+                            <label for="inputPassword3">Father's Occupation</label>
+                            <asp:TextBox runat="server" CssClass ="form-control capitalize" ID="txtfatOcupa"></asp:TextBox>
+                        </div>
+                 
+                        
+                        <div class="col-sm-3">
+                            <label for="inputPassword3">Mother's Occupation</label>
+                            <asp:TextBox runat="server" CssClass="form-control capitalize" ID="txtmotOcupa" ></asp:TextBox>
+                        </div>
+                    
+                        
+                        <div class="col-sm-3">
+                            <label for="inputPassword3">Hometown</label>
+                            <asp:TextBox ID="txthometown" runat="server" CssClass="form-control capitalize"></asp:TextBox>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <asp:Button ID="btnsave" runat="server" Text="Save" class="btn btn-primary" />
+                    <asp:Button ID="btncancel" runat="server" Text="Cancel" class="btn btn-success float-right" />
+                </div>
+                <!-- /.card-footer -->
+
+            </div>
+            <!-- /.card -->
+
+        </div>
+        <asp:TextBox ID="txtdateyear" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="txtdays" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="txtmonths" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="txtmyID" runat="server" Visible="false" BackColor="#FFFF99"></asp:TextBox>
+        <asp:TextBox ID="txtgender" runat="server" Visible="False"></asp:TextBox>
+        <asp:Label ID="lblImageName" runat="server" Text="" Visible="false"></asp:Label>
+    </div>
+    <br />
+
+</asp:Content>

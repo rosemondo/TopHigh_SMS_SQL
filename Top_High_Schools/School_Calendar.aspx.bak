@@ -1,0 +1,160 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="School_Calendar.aspx.vb" Inherits="Top_High_Schools.School_Calendar" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 34px !important;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ccc !important;
+            border-radius: 0px !important;
+        }
+    </style>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h4 mb-0 text-gray-800">Academic Calendar Settings</h4>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Payment Form</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group row">
+
+                        <div class="col-sm-9">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Academic Term</label>
+                            <dx:ASPxComboBox ID="ddlterm" runat="server" CssClass="form-control" NullText=" - Select -">
+                                <Items>
+                                    <dx:ListEditItem Text="First Term" Value="First Term" />
+                                    <dx:ListEditItem Text="Second Term" Value="Second Term" />
+                                    <dx:ListEditItem Text="Third Term" Value="Third Term" />
+                                </Items>
+                            </dx:ASPxComboBox>
+                            <asp:TextBox ID="txtclassid" runat="server" Visible="false"></asp:TextBox>
+                            <asp:TextBox ID="txtstudid" runat="server" Visible="false"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <div class="col-sm-9">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Academic Year</label>
+                            <dx:ASPxComboBox ID="ddlyear" runat="server" CssClass="form-control" NullText=" - Select -">
+                                <Items>
+                                    <dx:ListEditItem Text="2021" Value="2021" />
+                                    <dx:ListEditItem Text="2022" Value="2022" />
+                                    <dx:ListEditItem Text="2023" Value="2023" />
+                                    <dx:ListEditItem Text="2024" Value="2024" />
+                                    <dx:ListEditItem Text="2025" Value="2025" />
+                                    <dx:ListEditItem Text="2026" Value="2026" />
+                                    <dx:ListEditItem Text="2027" Value="2027" />
+                                    <dx:ListEditItem Text="2028" Value="2028" />
+                                    <dx:ListEditItem Text="2029" Value="2029" />
+                                    <dx:ListEditItem Text="2030" Value="2030" />
+                                    <dx:ListEditItem Text="2031" Value="2031" />
+                                    <dx:ListEditItem Text="2032" Value="2031" />
+                                    <dx:ListEditItem Text="2033" Value="2033" />
+                                    <dx:ListEditItem Text="2034" Value="2034" />
+                                    <dx:ListEditItem Text="2035" Value="2035" />
+                                    <dx:ListEditItem Text="2036" Value="2036" />
+                                    <dx:ListEditItem Text="2037" Value="2037" />
+                                    <dx:ListEditItem Text="2038" Value="2038" />
+                                    <dx:ListEditItem Text="2039" Value="2039" />
+                                    <dx:ListEditItem Text="2040" Value="2040" />
+                                    <dx:ListEditItem Text="2041" Value="2041" />
+                                    <dx:ListEditItem Text="2042" Value="2042" />
+                                    <dx:ListEditItem Text="2043" Value="2043" />
+                                    <dx:ListEditItem Text="2044" Value="2044" />
+                                    <dx:ListEditItem Text="2045" Value="2045" />
+                                    <dx:ListEditItem Text="2046" Value="2046" />
+                                    <dx:ListEditItem Text="2047" Value="2047" />
+                                    <dx:ListEditItem Text="2048" Value="2048" />
+                                    <dx:ListEditItem Text="2049" Value="2049" />
+                                    <dx:ListEditItem Text="2050" Value="2050" />
+                                    <dx:ListEditItem Text="2051" Value="2051" />
+                                    <dx:ListEditItem Text="2052" Value="2052" />
+                                    <dx:ListEditItem Text="2053" Value="2053" />
+                                    <dx:ListEditItem Text="2054" Value="2054" />
+                                    <dx:ListEditItem Text="2055" Value="2055" />
+                                    <dx:ListEditItem Text="2056" Value="2056" />
+                                    <dx:ListEditItem Text="2057" Value="2057" />
+                                    <dx:ListEditItem Text="2058" Value="2058" />
+                                    <dx:ListEditItem Text="2060" Value="2060" />
+                                </Items>
+                            </dx:ASPxComboBox>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+
+                        <div class="col-sm-9">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Start Date</label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtstartdate" TextMode="Date"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <div class="col-sm-9">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">End Date</label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtenddate" TextMode="Date" AutoPostBack="True"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <asp:Button ID="btnsave" runat="server" Text="Save" class="btn btn-primary" />
+                    <asp:Button ID="btncancel" runat="server" Text="Cancel" class="btn btn-success float-right" />
+                </div>
+                <!-- /.card-footer -->
+            </div>
+    </div>
+        <asp:Label ID="lblid" runat="server" Text="Label" Visible="false"></asp:Label>
+        <asp:Label ID="lblmonthcount" runat="server" Text="Label" Visible="false"></asp:Label>
+        <asp:Label ID="lbldays" runat="server" Text="0" Visible="false"></asp:Label>
+        <asp:Label ID="lblweekends" runat="server" Text="0" Visible="false"></asp:Label>
+         <asp:Label ID="lblmultiple" runat="server" Text="2" Visible="false"></asp:Label>
+        <asp:Label ID="lblfindays" runat="server" Text="0" Visible="false"></asp:Label>
+    </div>
+
+
+</asp:Content>

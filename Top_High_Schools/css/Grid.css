@@ -1,0 +1,1339 @@
+﻿/* DEFAULTS
+----------------------------------------------------------*/
+
+.mGrid th a:link {
+text-decoration: none;
+color:#000;
+}
+
+
+.pnl
+{
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 15px;
+	color: White;
+	background-color:#3B3B3B ;  /*#6886A8 */
+	padding: 5px;
+	cursor: pointer;
+	border: solid 1px #c0c0c0;
+}
+
+.Innerpnl
+{
+	font-weight: bold;
+	font-size: 12px;
+	background-color:#A4A4A4 ; /*#C3D2E1;#0296CC; White*/
+	cursor: pointer;
+	border: none;
+	line-height: 12px;
+}
+
+.tr
+{
+	font-weight: bold;
+	font-size: 12px;
+	padding-left: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	cursor: pointer;
+	border: none;
+	line-height: 12px;
+}
+
+.tr:hover
+{
+	font-weight: bold;
+	color: White;
+	background-color: #C3D2E1;
+	padding-left: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	cursor: pointer;
+	line-height: 12px;
+}
+
+.tm
+{
+	font-weight: bold;
+	color: White;
+	background-color: yellow;
+	padding-left: 20px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	cursor: pointer;
+	line-height: 12px;
+}
+
+.FrameMain
+{
+	/*top: expression((document.documentElement.clientHeight - 100) + "px") !important;#4C1548#4C4C4C*/
+	width: 100%;
+	border: none;
+}
+
+.body
+{
+	margin: 0;
+	padding: 0;
+}
+
+.Login
+{
+	/*background-color:#6886A8;FDFEFD#B8E1FE62ADE1#418DD3A7D4FE#AFE8FC#2181BB*/
+	background-color: #6886A8;
+}
+.container
+{
+	/*width: expression((document.body.clientWidth - 10) + "px") !important;*/
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	background-color: #6886A8;
+	height: 100px;
+}
+
+.TableClass
+{
+	background-color: #6886A8;
+	border: solid 4px White;
+	width: 600px;
+}
+
+/* For jQuery dropdown menus */
+
+ul.layouts
+{
+	list-style: none;
+	padding: 0 20px;
+	margin: 0;
+	float: left;
+	width: 90%;
+	background: url(../Images/body.jpg);
+}
+
+ul.layouts li
+{
+	float: left;
+	margin: 0;
+	padding: 0 15px 0 0;
+	position: relative; /*--Declare X and Y axis base--*/
+}
+ul.layouts li a
+{
+	padding: 10px 5px;
+	color: #fff;
+	display: block;
+	text-decoration: none;
+	float: left;
+}
+ul.layouts li a:hover
+{
+	background: url(../Images/body.jpg);
+}
+ul.layouts li span
+{
+	/*--Drop down trigger styles--*/
+	width: 17%;
+	height: 35px;
+	float: left;
+	background: url(../Images/subnav_btn.gif) no-repeat center top;
+}
+ul.layouts li span.subhover
+{
+	background-position: center bottom;
+	cursor: pointer;
+}
+ul.layouts li ul.subnav li ul.subsubnav
+{
+	list-style: none;
+	position: absolute; /*--Important - Keeps subnav from affecting main layouts flow--*/
+	left: 0;
+	top: 35px;
+	background: #333;
+	margin: 0;
+	padding: 0;
+	display: none;
+	float: left;
+	width: 22%;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	border: 1px solid #111;
+}
+ul.layouts li ul.subnav li ul.subsubnav li
+{
+	margin: 0;
+	padding: 0;
+	border-top: 0px solid #252525; /*--Create bevel effect--*/
+	border-bottom: 0px solid #444; /*--Create bevel effect--*/
+	clear: both;
+	width: 22%;
+}
+html ul.layouts li ul.subnav li a ul.subsbunav li a
+{
+	float: left;
+	width: 20%;
+	background: url(../Images/body.jpg);
+	padding-left: 20px;
+}
+html ul.layouts li ul.subnav li a:hover ul.subsubnav li a:hover
+{
+	/*--Hover effect for subnav links--*/
+	background: url(../Images/body.jpg);
+}
+ul.topnav
+{
+	list-style: none;
+	padding: 0 20px;
+	margin: 0;
+	float: left;
+	width: 99%;
+	font-size: 100%;
+}
+ul.topnav li
+{
+	float: left;
+	margin: 0;
+	padding: 0 15px 0 0;
+	position: relative; /*--Declare X and Y axis base--*/
+}
+ul.topnav li a
+{
+	padding: 10px 5px;
+	color: Gray;
+	display: block;
+	text-decoration: none;
+	float: left;
+}
+ul.topnav li a:hover
+{
+	/*background: url(topnav_hover.gif) no-repeat center top;*/
+}
+ul.topnav li span
+{
+	/*--Drop down trigger styles--*/
+	width: 10px;
+	height: 35px;
+	float: left;
+	background: url(../Images/subnav_btn.gif) no-repeat center top;
+}
+ul.topnav li span.subhover
+{
+	background-position: center bottom;
+	cursor: pointer;
+}
+/*--Hover effect for trigger--*/
+ul.topnav li ul.subnav
+{
+	list-style: none;
+	position: absolute; /*--Important - Keeps subnav from affecting main navigation flow--*/
+	left: 0;
+	top: 35px;
+	background: url(../Images/body.jpg);
+	margin: 0;
+	padding: 0;
+	display: none;
+	float: left;
+	width: 280px; /*170*/
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	border: 1px solid #111;
+}
+ul.topnav li ul.subnav li
+{
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #252525; /*--Create bevel effect--*/
+	border-bottom: 1px solid #444; /*--Create bevel effect--*/
+	clear: both;
+	width: 280px; /*170*/
+}
+html ul.topnav li ul.subnav li a
+{
+	float: left;
+	width: 250px; /*145*/
+	background: url(../Images/body.jpg.gif);
+	padding-left: 20px;
+}
+html ul.topnav li ul.subnav li a:hover
+{
+	/*--Hover effect for subnav links--*/
+	background: url(../Images/body.jpg);
+	color: White;
+}
+#header img
+{
+	margin: 20px 0 10px;
+}
+
+/* This class is used for Logo*/
+.Banner
+{
+	color: White;
+	font-size: 240%;
+	font-weight: bold;
+	vertical-align: bottom;
+}
+
+.CopyRights
+{
+	color: White;
+	font-size: 100%;
+	font-weight: bold;
+	vertical-align: bottom;
+}
+
+/*Grids*/
+
+.HiddenColumn
+{
+	display: none;
+}
+
+.GridClass
+{
+	/*border-bottom: 1px solid #848381 !important;*/
+	width: 100%;
+	border: solid 2px #6886A8;
+	font-size: 85%;
+	background-color: White;
+}
+
+.ResultTableClass
+{
+	width: 100%;
+	border-left: solid 2px #6886A8;
+	border-right: solid 2px #6886A8;
+	font-size: 85%;
+	background-color: White;
+}
+
+.ResultTableClass:hover
+{
+	width: 100%;
+	border-left: solid 2px #6886A8;
+	border-right: solid 2px #6886A8;
+	font-size: 85%;
+	background-color: #C3D2E1;
+}
+
+.TableRowOddClass
+{
+	width: 100%;
+	border-left: solid 2px #6886A8;
+	border-right: solid 2px #6886A8;
+	font-size: 85%;
+	background-color: White;
+}
+
+.TableRowOddClass:hover
+{
+	width: 100%;
+	border-left: solid 2px #6886A8;
+	border-right: solid 2px #6886A8;
+	font-size: 85%;
+	background-color: #C3D2E1;
+}
+
+.ColumnHeadingClass
+{
+	font-size: 85%;
+	font-weight: normal;
+	text-transform: uppercase;
+	vertical-align: bottom;
+	text-align: center;
+	text-decoration: none;
+	color: White; /*background: #A71850 url(../Images/bg_GreyShadow.gif) repeat-x 0 bottom;9987CB#3C0338#AFC1D5*/
+	background-color: #6886A8;
+	height: 26px;
+}
+
+th.ColumnHeadingClass
+{
+	border-right: 1px solid #d6d6d6;
+}
+
+.ColumnHeadingClass a
+{
+	text-decoration: none;
+	padding-right: 15px;
+	background: url(../Images/sort.gif) no-repeat center right;
+	color: White;
+	font-weight: bold;
+}
+
+.ColumnHeadingClass a ins
+{
+	text-decoration: none;
+}
+
+.TableRowFooterClass
+{
+	width: 100%;
+	border: none;
+	font-size: 85%;
+	background-color: #6886A8;
+	height: 26px;
+}
+
+.PagerClass
+{
+	font-size: 100%;
+	font-weight: bold;
+	vertical-align: bottom;
+	text-decoration: none;
+	color: Black;
+	background-color: #C3D2E1;
+}
+
+.PagerClass a
+{
+	font-size: 100%;
+	font-weight: bold;
+	vertical-align: bottom;
+	text-decoration: none;
+	color: Black;
+	background-color: #C3D2E1;
+}
+
+.PagerClass a:active
+{
+	font-size: 100%;
+	font-weight: bold;
+	vertical-align: bottom;
+	text-decoration: none;
+	color: Black;
+	background-color: #C3D2E1;
+}
+
+/*Controls*/
+
+.LabelClass
+{
+	font-size: 85%;
+	color: black;
+	font-weight: bold;
+	z-index: 10;
+	text-align: left;
+	padding-left: 5px;
+}
+
+.TextClass
+{
+	font-size: 85%;
+	color: Black;
+	font-weight: bold;
+	text-align: left;
+	width: 75px;
+	padding-left: 5px;
+}
+
+.WelcomeClass
+{
+	font-size: 100%;
+	color: White;
+	font-weight: bold;
+	text-align: left;
+	width: 75px;
+	padding-left: 5px;
+}
+
+.SectionHeadingClass
+{
+	font-size: 125%;
+	color: Black;
+	font-weight: bold;
+	font-style: italic;
+	text-align: left;
+	width: 100px;
+	padding-left: 5px;
+}
+
+.fieldClass
+{
+	border: solid 2px Black;
+}
+
+.legendClass
+{
+	font-size: 105%;
+	color: #6886A8;
+	font-weight: bold;
+}
+
+.InputClass
+{
+	font-size: 85%;
+	color: Black;
+	font-weight: normal;
+	width: 150px;
+	border: solid 1px #cccccc;
+}
+
+.PEDyInputClass
+{
+	font-size: 85%;
+	color: Black;
+	font-weight: normal;
+	width: 130px;
+	border: solid 1px #cccccc;
+}
+
+
+.GridInputClass
+{
+	font-size: 120%;
+	color: Black;
+	font-weight: normal;
+	width: 100px;
+	height: 17px;
+	border: solid 1px #cccccc;
+}
+
+.GridSmallDigitClass
+{
+	font-size: 120%;
+	color: Black;
+	font-weight: normal;
+	width: 50px;
+	height: 17px;
+	border: solid 1px #cccccc;
+}
+
+.GridLabelClass
+{
+	font-size: 120%;
+	color: black;
+	font-weight: normal;
+	z-index: 10;
+	text-align: left;
+	padding-left: 5px;
+}
+
+.GridLinkClass
+{
+	font-size: 120%;
+	color: Blue;
+	font-weight: bold;
+	z-index: 10;
+	text-align: left;
+	padding-left: 5px;
+}
+
+.GridNumericClass
+{
+	font-size: 120%;
+	color: black;
+	font-weight: normal;
+	z-index: 10;
+	text-align: right;
+	padding-right: 5px;
+}
+
+.DateClass
+{
+	font-size: 85%;
+	color: Black;
+	font-weight: normal;
+	width: 80px;
+	border: solid 1px #cccccc;
+}
+
+.GridDateClass
+{
+	font-size: 120%;
+	color: Black;
+	font-weight: normal;
+	width: 80px;
+	border: solid 1px #cccccc;
+}
+
+.WideInputClass
+{
+	font-size: 85%;
+	color: Black;
+	font-weight: normal;
+	width: 600px;
+	border: solid 1px #cccccc;
+}
+
+.SemiMediumInputClass
+{
+	font-size: 85%;
+	color: Black;
+	font-weight: normal;
+	width: 220px;
+	border: solid 1px #cccccc;
+}
+
+.MediumInputClass
+{
+	font-size: 85%;
+	color: Black;
+	font-weight: normal;
+	width: 400px;
+	border: solid 1px #cccccc;
+}
+
+.PasswordClass
+{
+	font-size: 85%;
+	color: Black;
+	width: 220px;
+	border: solid 1px #cccccc;
+}
+
+.sectionDivider
+{
+	height: 1px;
+	background-color: #e1e1e1;
+}
+
+.TextArea
+{
+	font-size: 85%;
+	font-weight: normal;
+	color: Black;
+	background-color: White;
+	height: 60px;
+	width: 90%;
+	border: solid 1px #cccccc;
+}
+
+.GridTextArea
+{
+	font-size: 85%;
+	font-weight: normal;
+	color: Black;
+	background-color: White;
+	height: 25px;
+	width: 90%;
+	border: solid 1px #cccccc;
+}
+
+.GridSelectClass
+{
+	font-size: 120%;
+	color: Black;
+	font-weight: Bold;
+	background-color: White;
+}
+
+input.GridButtonClass, .GridButtonClass
+{
+	height: 23px;
+	border-width: 0px;
+	background: url(../images/bg_button.png) repeat-x 0 bottom;
+	padding-right: 8px;
+	padding-left: 8px;
+	font-size: 100%;
+	font-weight: bold;
+	line-height: 23px;
+	cursor: pointer;
+	width: 60px;
+	color: Black;
+}
+
+.SmallNumericClass
+{
+	font-size: 85%;
+	font-weight: normal;
+	color: Black;
+	background-color: White;
+	width: 40%;
+	border: solid 1px #cccccc;
+}
+
+.SmallNumericClassIdle
+{
+	font-size: 85%;
+	font-weight: normal;
+	color: Red;
+	background-color: #f0f0f0;
+	width: 40%;
+	border: solid 1px #cccccc;
+}
+
+.WMTextAreaFocusField
+{
+	font-size: 85%;
+	font-family: Arial;
+	font-weight: normal;
+	color: Black;
+	background: White;
+	height: 60px;
+	width: 76%;
+	border: solid 1px #cccccc;
+}
+
+.WMTextAreaIdleField
+{
+	font-size: 85%;
+	font-weight: normal;
+	color: Red;
+	background-color: #f0f0f0;
+	height: 60px;
+	width: 85%;
+	border: solid 1px #cccccc;
+}
+
+.additionInfolabelClass
+{
+	border-right: 1px solid #e1e1e1;
+	padding-left: 5px;
+}
+
+.SelectClass
+{
+	font-size: 85%;
+	color: Black;
+	font-weight: Bold;
+	background-color: White;
+}
+
+input.ButtonClass, .ButtonClass
+{
+	height: 23px;
+	border-width: 0px;
+	background: url(../images/bg_button.png) repeat-x 0 bottom;
+	padding-right: 8px;
+	padding-left: 8px;
+	font-size: 85%;
+	font-weight: bold;
+	line-height: 23px;
+	cursor: pointer;
+	width: 70px;
+	color: Black;
+}
+
+.ButtonWrap
+{
+	display: -moz-inline-stack;
+	display: inline-block;
+	zoom: 1; 
+	display:inline;
+background:url(../Images/button_Left_Short.gif)no-repeatleftcenter;
+position:relative;
+overflow:hidden;
+}
+
+.ButtonWrap input
+{
+	background: url(../Images/button_Right.gif) no-repeat right bottom;
+}
+
+.WaterMarkFocusField
+{
+	color: Black;
+	font-weight: normal;
+	font-size: 85%;
+	background: White;
+	width: 220px;
+	border: solid 1px #cccccc;
+}
+
+.WaterMarkidleField
+{
+	color: red;
+	font-weight: normal;
+	font-size: 85%;
+	background: #f0f0f0;
+	width: 220px;
+	border: solid 1px #cccccc;
+}
+
+.GridWaterMarkFocusField
+{
+	color: Black;
+	font-weight: normal;
+	font-size: 120%;
+	background: White;
+	width: 220px;
+	height: 17px;
+	border: solid 1px #cccccc;
+}
+
+.GridWaterMarkidleField
+{
+	color: red;
+	font-weight: normal;
+	font-size: 120%;
+	background: #f0f0f0;
+	width: 220px;
+	height: 17px;
+	border: solid 1px #cccccc;
+}
+
+.GridWaterMarkidleFieldTextAreaLong
+{
+	color: red;
+	font-weight: normal;
+	font-size: 120%;
+	background: #f0f0f0;
+	width: 500px;
+	height: 34px;
+	border: solid 1px #cccccc;
+}
+
+.WideWaterMarkFocusField
+{
+	color: Black;
+	font-weight: normal;
+	font-size: 85%;
+	background: White;
+	width: 400px;
+	border: solid 1px #cccccc;
+}
+
+.WideWaterMarkidleField
+{
+	color: red;
+	font-weight: normal;
+	font-size: 85%;
+	background: #f0f0f0;
+	width: 400px;
+	border: solid 1px #cccccc;
+}
+
+.GridWideWaterMarkFocusField
+{
+	color: Black;
+	font-weight: normal;
+	font-size: 120%;
+	background: White;
+	width: 400px;
+	height: 15px;
+	border: solid 1px #cccccc;
+}
+
+.GridWideWaterMarkidleField
+{
+	color: red;
+	font-weight: normal;
+	font-size: 120%;
+	background: #f0f0f0;
+	width: 400px;
+	height: 15px;
+	border: solid 1px #cccccc;
+}
+
+
+.SmallWaterMarkFocusField
+{
+	color: Black;
+	font-weight: normal;
+	font-size: 120%;
+	background: White;
+	width: 140px;
+	height: 15px;
+	border: solid 1px #cccccc;
+}
+
+.SmallWaterMarkidleField
+{
+	color: red;
+	font-weight: normal;
+	font-size: 120%;
+	background: #f0f0f0;
+	width: 140px;
+	height: 15px;
+	border: solid 1px #cccccc;
+}
+
+input.MediumButtonClass, .MediumButtonClass
+{
+	height: 23px;
+	border-width: 0px;
+	background: url(../images/bg_button.png) repeat-x 0 bottom;
+	padding-right: 8px;
+	padding-left: 8px;
+	font-size: 85%;
+	font-weight: bold;
+	line-height: 23px;
+	cursor: pointer;
+	width: 80px;
+	color: Black;
+	display: block;
+}
+
+input.WideButtonClass, .WideButtonClass
+{
+	height: 23px;
+	border-width: 0px;
+	padding-right: 8px;
+	padding-left: 8px;
+	font-size: 85%;
+	font-weight: bold;
+	line-height: 23px;
+	cursor: pointer;
+	width: 160px;
+	color: Black;
+	display: block;
+}
+
+.MediumButtonWrap
+{
+	display: -moz-inline-stack;
+	display: inline-block;
+	zoom: 1; *display:inline;
+background:url(../Images/button_Left_Medium.gif)no-repeatleftcenter;
+position:relative;
+overflow:hidden;
+}
+
+.MediumButtonWrap input
+{
+	background: url(../Images/button_Right.gif) no-repeat right bottom;
+}
+
+.WideButtonWrap
+{
+	display: -moz-inline-stack;
+	display: inline-block;
+	zoom: 1; 
+	display:inline;
+background:url(../Images/button_Left_Wide.gif)no-repeatleftcenter;
+position:relative;
+overflow:hidden;
+}
+
+.WideButtonWrap input
+{
+	background: url(../Images/button_Right.gif) no-repeat right bottom;
+}
+
+.ColumnLeftClass
+{
+	border-left: solid 2px #6886A8;
+}
+
+.ColumnRightClass
+{
+	border-right: solid 2px #6886A8;
+}
+
+.ColumnTopClass
+{
+	border-top: solid 2px #6886A8;
+}
+
+.ColumnBottomClass
+{
+	border-bottom: solid 2px #6886A8;
+}
+
+.DBResultTableClass
+{
+	border-bottom: 1px solid #848381 !important;
+	width: 100%;
+	overflow: auto;
+	background-color: Aqua;
+}
+
+.DBTableRowOddClass
+{
+	background-color: White;
+}
+
+.DBColumnHeadingClass
+{
+	font-size: 60%;
+	font-weight: bold;
+	text-transform: uppercase;
+	vertical-align: bottom;
+	text-align: center;
+	color: Gray;
+	background: url(../Images/body.jpg) repeat-x 0 bottom;
+	height: 20px;
+}
+
+.DBColumnHeadingClass a
+{
+	text-decoration: none;
+	padding-right: 15px;
+	background: url(../Images/sort.gif) no-repeat center right;
+	color: Gray;
+	font-weight: bold;
+}
+
+.DBPagerClass
+{
+	font-size: 100%;
+	font-weight: bold;
+	vertical-align: bottom;
+	text-decoration: none;
+	color: White;
+	background-color: Aqua; /*background: url(../Images/body.jpg) repeat-x 0 bottom;*/
+}
+
+.HeadingClass
+{
+	font-size: 150%;
+	font-weight: bold;
+	font-style: italic;
+	color: Gray; /*border:solid 3px Gray;*/
+}
+
+/* Tab CSS */
+
+.TabClass .ajax__tab_tab span
+{
+	display: block;
+	line-height: 25px;
+	width: 112px;
+	height: 46px;
+	position: relative;
+	outline: none;
+	text-align: left;
+}
+
+.TabClass .ajax__tab_header
+{
+	background-color: Transparent;
+	font-size: 83%;
+	font-weight: bold;
+	width: 770px;
+	line-height: 25px;
+	height: 46px;
+	vertical-align: bottom;
+	text-align: center;
+	padding-top: 6px;
+	margin-left: 110px;
+	margin-bottom: -12px;
+	position: relative;
+	z-index: 9;
+}
+
+.TabClass .ajax__tab_body
+{
+	font-size: 100%;
+	width: 100%;
+}
+
+.TabClass .ajax__tab_inner
+{
+	line-height: 25px;
+	height: 46px;
+	width: 110px;
+	text-align: left;
+	vertical-align: bottom;
+	display: block;
+	padding-left: 13px;
+}
+
+.TabClass .ajax__tab_outer
+{
+	background: url(../Images/innernavbutton1.gif) no-repeat;
+	width: 110px;
+	height: 46px;
+	line-height: 25px;
+	display: block;
+	float: left;
+	margin-left: -6px;
+	margin-right: -2px;
+}
+
+.TabClass .ajax__tab_active .ajax__tab_outer
+{
+	background: url(../Images/innernavbutton1.gif) repeat-x;
+	background-position: -114px 0px !important;
+}
+
+.TabClass .ajax__tab_hover
+{
+	cursor: pointer;
+	color: #990000;
+}
+
+.TabClass .ajax__tab_hover .ajax__tab_outer
+{
+	cursor: pointer;
+}
+
+.TabClass .ajax__tab_hover .ajax__tab_inner
+{
+	cursor: pointer;
+}
+
+.TabClass .ajax__tab_hover .ajax__tab_tab
+{
+	cursor: pointer;
+}
+
+.ajax__tab_xp .ajax__tab_header
+{
+	font-size: 83%;
+	font-weight: bold;
+	background: url(<%=WebResource( "AjaxControlToolkit.Tabs.tab-line.gif" )%>) repeat-x bottom;
+}
+.ajax__tab_xp .ajax__tab_outer
+{
+	padding-right: 4px;
+	background: url(../Images/tab-right.gif) no-repeat right !important;
+	height: 21px;
+}
+.ajax__tab_xp .ajax__tab_inner
+{
+	padding-left: 3px;
+	background: url(../Images/tab-left.gif) no-repeat !important;
+}
+.ajax__tab_xp .ajax__tab_tab
+{
+	height: 13px;
+	padding: 4px;
+	margin: 0px;
+	background: url(../Images/tab.gif) repeat-x !important;
+}
+.ajax__tab_xp .ajax__tab_tab span
+{
+	text-align: center;
+}
+
+.ajax__tab_xp .ajax__tab_hover .ajax__tab_outer
+{
+	cursor: pointer;
+	background: url(<%=WebResource( "AjaxControlToolkit.Tabs.tab-hover-right.gif" )%>) no-repeat right;
+}
+.ajax__tab_xp .ajax__tab_hover .ajax__tab_inner
+{
+	cursor: pointer;
+	background: url(<%=WebResource( "AjaxControlToolkit.Tabs.tab-hover-left.gif" )%>) no-repeat;
+}
+.ajax__tab_xp .ajax__tab_hover .ajax__tab_tab
+{
+	cursor: pointer;
+	background: url(<%=WebResource( "AjaxControlToolkit.Tabs.tab-hover.gif" )%>) repeat-x;
+}
+.ajax__tab_xp .ajax__tab_active .ajax__tab_outer
+{
+	background: url(../Images/tab-active-right.gif) no-repeat right !important;
+}
+.ajax__tab_xp .ajax__tab_active .ajax__tab_inner
+{
+	background: url(../Images/tab-active-left.gif) no-repeat !important;
+}
+.ajax__tab_xp .ajax__tab_active .ajax__tab_tab
+{
+	background: url(../Images/tab-active.gif) repeat-x !important;
+}
+.ajax__tab_xp .ajax__tab_body
+{
+	border: 1px solid #e0e0e0 !important;
+	border-top: 0;
+	padding: 8px;
+	background-color: #ffffff;
+}
+
+.PopUpClass .TabClass .ajax__tab_header
+{
+	margin-left: 0px;
+	margin-right: 0px;
+	margin: 0px;
+	height: 20px;
+}
+
+.PopUpClass .TabClass .ajax__tab_outer
+{
+	background-image: none;
+	height: 22px;
+}
+
+.PopUpClass .TabClass .ajax__tab_active .ajax__tab_outer
+{
+	background-image: none;
+	background-color: #f5f5f5;
+}
+
+.PopUpClass .ajax__tab_tab span
+{
+	text-align: center;
+}
+
+.PopUpClass .TabClass .ajax__tab_inner
+{
+	padding-left: 0px;
+}
+
+/* Gridview styles */
+* {
+    padding: 0; 
+    margin: 0; 
+}
+body {
+	font: 13px verdana;
+	/*background-color: #F7F7E9;*/
+}
+h1 {
+    font: bold 32px Times;
+	color: #666;
+	text-align: center;
+	padding: 20px 0;    
+}
+#container {
+    width: 700px;
+    margin: 10px auto;
+}
+.mGrid
+{
+	width: 100%;
+	background-color: #f9f9f9;
+	margin: 5px 0 10px 0;
+	border: solid 1px #ececec;
+	border-collapse: collapse;
+}
+.mGrid td
+{
+	/*padding: 4px;*/
+	height:40px;
+	border-left:1px solid #FFF;
+	border-right:1px solid #FFF;
+	border-bottom:none;
+	border-top:none;
+	color: #717171;
+	font: 11px verdana; /* 9px verdana; */
+	font-weight:bold;
+	text-align:center;
+}
+.mGrid th
+{
+	padding: 0px 10px 0px 10px;
+	color: #000;
+	background: #fff url(../images/grd_head.png) repeat-x left top;
+	height:40px;
+	border: solid 2px #f8f8f8;
+	font-size: 0.9em; /* 0.9em */
+}
+.mGrid .alt
+{
+	background: #f1f1f1;
+	height:40px;
+}
+.mGrid .pgr
+{
+	/*background: #424242 url(../images/grd_pgr.png) repeat-x left top;*/
+	background:#f1f1f1;
+}
+.mGrid .pgr table
+{
+	margin: 5px 0;
+}
+.mGrid .pgr td
+{
+	border-width: 0;
+	padding: 0 6px;
+	/*border-left: solid 1px #666;*/
+	font-weight: bold;
+	color:#333; /*#fff;*/
+	line-height: 12px;
+}
+.mGrid .pgr a
+{
+	color: Red;  /*#666;*/
+	text-decoration: none;
+}
+.mGrid .pgr a:hover
+{
+	color:#4AB048; /* #000;*/
+	text-decoration:underline;
+}
+
+/*AutoComplete flyout */
+
+.autocomplete_completionListElement 
+{  
+	margin : 0px!important;
+	background-color : inherit;
+	color : windowtext;
+	border : buttonshadow;
+	border-width : 1px;
+	border-style : solid;
+	cursor : 'default';
+	overflow : auto;
+	height : 200px;
+	font-family:Tahoma;
+	font-size:small;
+    text-align : left; 
+    list-style-type : none;
+}
+
+/* AutoComplete highlighted item */
+
+.autocomplete_highlightedListItem
+{
+	background-color: #ffff99;
+	color: black;
+	padding: 1px;
+}
+
+/* AutoComplete item */
+
+.autocomplete_listItem 
+{
+	background-color : window;
+	color : windowtext;
+	padding : 1px;
+/*d-color : window;
+	color : windowtext;
+	padding : 1px;*/
+}
+
+/* Pricing Grid */
+.prGrid
+{
+	width: 100%;
+	background-color: #fff;
+	margin: 5px 0 10px 0;
+	border: solid 1px #525252;
+	border-collapse: collapse;
+}
+.prGrid td
+{
+	padding: 4px;
+	border: solid 1px #c1c1c1;
+	color: #717171;
+	font: 11px verdana; /* 9px verdana; */
+	font-weight:bold;
+}
+.prGrid th
+{
+	padding: 4px 2px;
+	color: #fff;
+	background: #424242 url(../images/grd_head.png) repeat-x top;
+	border-left: solid 1px #525252;
+	font-size: 0.9em; /* 0.9em */
+}
+.prGrid .alt
+{
+	/*background: #fcfcfc url(grd_alt.png) repeat-x top;*/
+}
+.prGrid .pgr
+{
+	background: #424242 url(../images/grd_pgr.png) repeat-x top;
+}
+.prGrid .pgr table
+{
+	margin: 5px 0;
+}
+.prGrid .pgr td
+{
+	border-width: 0;
+	padding: 0 6px;
+	border-left: solid 1px #666;
+	font-weight: bold;
+	color: white; /*#fff;*/
+	line-height: 12px;
+}
+.prGrid .pgr a
+{
+	color: Red;  /*#666;*/
+	text-decoration: none;
+}
+.prGrid .pgr a:hover
+{
+	color: Green; /* #000;*/
+	text-decoration: none;
+}

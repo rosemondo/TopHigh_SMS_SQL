@@ -1,0 +1,195 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Pay_roll_process.aspx.vb" Inherits="Top_High_Schools.Pay_roll" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h4 mb-0 text-gray-800">Payroll Process</h4>
+        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fa fa-plus fa-sm text-white-50"></i></a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-info">
+                <div class="card-header">
+                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        class="fa fa-list fa-sm text-white-50"></i></a>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+
+                    <div class="form-group row">
+
+                        <div class="col-sm-6">
+                            <asp:Label ID="Label2" runat="server" class="col-form-label" Text="Staff"></asp:Label>
+                            <dx:ASPxComboBox ID="ddlstaff" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -" requide="true" AutoPostBack="true"></dx:ASPxComboBox>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <asp:Label ID="Label1" runat="server" class="col-form-label" Text="Enter Snnit Rate"></asp:Label>
+                            <asp:TextBox ID="txtSnRate" CssClass="form-control" runat="server" Text="0" Style="text-align:center;color:black"></asp:TextBox>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <asp:Label ID="Label3" runat="server" class="col-form-label" Text="Enter Paye Rate"></asp:Label>
+                            <asp:TextBox ID="txtPyRate" CssClass="form-control" runat="server" Text="0" Style="text-align:center;color:black"></asp:TextBox>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <!-- Input rows -->
+    <!--Row with two equal columns-->
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card card-info">
+                <div class="card-header">
+                    <asp:Button ID="btnprocess" runat="server" Text="Process" class="btn btn-success" Style="float: right" OnClick="Sumpayments"/>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-responsive-sm" cellspacing="0" width="100%">
+                            <thead class="text-primary" id="actstu">
+                                <tr>
+                                    <th>Basic Salary</th>
+                                    <th>Allowance</th>
+                                    <th>Gross Salary</th>
+                                    <th>Snnit</th>
+                                    <th>Paye</th>
+                                    <th>Loan</th>
+                                    <th>Net Salary</th>
+                                    <th>Month</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="RepeaterDB" runat="server">
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <asp:Label ID="lblbasicsal"  CssClass="form-control" runat="server" Text='<%# Eval("bisac_sal", "{0:N2}")%>' />
+                                            </td>
+                                            <td>
+                                                <asp:Label ID="lblallowance" CssClass="form-control" runat="server" Text='<%# Eval("allowances", "{0:N2}")%>'></asp:Label>
+                                            <td>
+                                                <asp:TextBox ID="txtgross" CssClass="form-control" runat="server" ReadOnly="true" BackColor="White" Text="0"></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtsnnit" CssClass="form-control" runat="server" ReadOnly="true" BackColor="White" Text="0"></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtpaye" CssClass="form-control" runat="server" ReadOnly="true" BackColor="White" Text="0"></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtloan" CssClass="form-control" runat="server" Text="0"></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="txtnet" CssClass="form-control" runat="server" ReadOnly="true" BackColor="White" Text="0"></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                <asp:DropDownList ID="dplmonths" CssClass="form-control" runat="server" required="true">
+                                                    <asp:ListItem></asp:ListItem>
+                                                    <asp:ListItem>January</asp:ListItem>
+                                                    <asp:ListItem>February</asp:ListItem>
+                                                    <asp:ListItem>March</asp:ListItem>
+                                                    <asp:ListItem>April</asp:ListItem>
+                                                    <asp:ListItem>May</asp:ListItem>
+                                                    <asp:ListItem>June</asp:ListItem>
+                                                    <asp:ListItem>July</asp:ListItem>
+                                                    <asp:ListItem>August</asp:ListItem>
+                                                    <asp:ListItem>September</asp:ListItem>
+                                                    <asp:ListItem>October</asp:ListItem>
+                                                    <asp:ListItem>November</asp:ListItem>
+                                                    <asp:ListItem>December</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div>
+                    <script src="lib/jquery/jquery.min.js"></script>
+                    <script src="plugins/datatables/jquery.dataTables.js"></script>
+                    <script src="js/dataTables.semanticui.min.js"></script>
+                    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+                    <script src="js/responsive.semanticui.min.js"></script>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#actstu').DataTable({
+                                responsive: {
+                                    details: {
+                                        display: $.fn.dataTable.Responsive.display.modal({
+                                            header: function (row) {
+                                                var data = row.data();
+                                                return 'Details for ' + data[0] + ' ' + data[1];
+                                            }
+                                        }),
+                                        renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                                            tableClass: 'ui table'
+                                        })
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <asp:Button ID="btn_Gen" runat="server" Text="Save" class="btn btn-primary" Style="float: right" OnClick="InsertPayRoll"/>
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <asp:TextBox ID="txtusers" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtlocation" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtlinkcode" runat="server" Visible="false"></asp:TextBox>
+        </div>
+    </div>
+
+</asp:Content>

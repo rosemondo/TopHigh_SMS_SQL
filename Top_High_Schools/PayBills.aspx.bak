@@ -1,0 +1,136 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="PayBills.aspx.vb" Inherits="Top_High_Schools.PayBills" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+
+    <style type="text/css">
+        .card-header {
+            background-color:dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 34px !important;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ccc !important;
+            border-radius: 0px !important;
+        }
+    </style>
+
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h4 mb-0 text-gray-800">Pay Bills</h4>
+         <a href="Suppliers_List.aspx" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fa fa-plus fa-sm text-white-50"></i>New Supplier</a>
+    </div>
+
+    <!-- Input rows -->
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Payment Form</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Suppliers</label>
+                        <div class="col-sm-9">
+                            <dx:ASPxComboBox ID="ddlSuppliers" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -" AutoPostBack="True"></dx:ASPxComboBox>
+                        </div>
+
+                        <asp:TextBox runat="server" ID="txtclassid" Visible="false"></asp:TextBox>
+                        <asp:TextBox runat="server" ID="txtstudid" Visible="false"></asp:TextBox>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Balance Due</label>
+                        <div class="col-sm-4">
+                            <asp:TextBox runat="server" Text="0" CssClass="form-control" ID="txtbaldue" onkeyup="sum()"></asp:TextBox>
+                        </div>
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Amount Paid</label>
+                        <div class="col-sm-3">
+                            <asp:TextBox runat="server" Text="0" CssClass="form-control" ID="txtpaid" onkeyup="sum()"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Date</label>
+                        <div class="col-sm-2">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtdate" TextMode="Date" required="true"></asp:TextBox>
+                        </div>
+                        <label for="inputEmail3" class="col-sm-1.5 col-form-label">Payment Status</label>
+                        <div class="col-sm-2">
+                            <dx:ASPxComboBox ID="ddlstatus" runat="server" CssClass="form-control" NullText="- Select -">
+                                <Items>
+                                    <dx:ListEditItem Text="Unpaid" Value="Unpaid" />
+                                    <dx:ListEditItem Text="Part Payment" Value="Part Payment" />
+                                    <dx:ListEditItem Text="Paid" Value="Paid" />
+                                </Items>
+                            </dx:ASPxComboBox>
+                        </div>
+                         <label for="inputEmail3" class="col-sm-2 col-form-label">Payment Method</label>
+                        <div class="col-sm-2">
+                            <dx:ASPxComboBox ID="ddlpaymeth" runat="server" CssClass="form-control" NullText="- Select -"></dx:ASPxComboBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Description</label>
+                        <div class="col-sm-9">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtdescription" required="true"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <asp:Button ID="btnsave" runat="server" Text="Save" class="btn btn-primary" />
+                    <asp:Button ID="btncancel" runat="server" Text="Cancel" class="btn btn-success float-right" />
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <asp:TextBox ID="txtCashAcc" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtReceAcc" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtAdmAcc" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtSchAcc" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtlinkcode" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtusers" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txttimer" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtlocation" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtcomp" Text="Test Comp" runat="server" Visible="false"></asp:TextBox>
+        </div>
+
+    </div>
+
+    <br />
+
+</asp:Content>

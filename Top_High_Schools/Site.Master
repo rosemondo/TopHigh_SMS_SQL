@@ -1,0 +1,723 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site.master.vb" Inherits="Top_High_Schools.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <script type="text/javascript">
+        window.history.forward(-1);
+    </script>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Top-High School Management System
+    </title>
+
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/css.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .mybg {
+            background-color: #16b60e;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="page-top">
+
+
+    <!-- Page Wrapper -->
+
+    <form id="form1" runat="server">
+
+        <div id="wrapper">
+
+            <!-- Sidebar -->
+            <ul class="navbar-nav mybg sidebar sidebar-dark accordion" id="accordionSidebar">
+
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="Dashboard.aspx">
+                    <div class="sidebar-brand-icon">
+                        <asp:Image ID="logo" runat="server" Width="50px" Height="50px" class="roundimage center-img" />
+                    </div>
+                    <div class="sidebar-brand-text mx-3" id="hd">
+                        <asp:Label ID="lblcompname" runat="server" Text="" ForeColor="White"></asp:Label>
+
+                    </div>
+                </a>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="Dashboard.aspx">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span id="db">Dashboard</span></a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Interface
+                </div>
+
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#admis"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span style="color: yellow" id="adm">Administration</span>
+                    </a>
+                    <div id="admis" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header" id="admp">Admission Process:</h6>
+                            <asp:HyperLink ID="hypmyreg" runat="server" NavigateUrl="~/Registration_Form.aspx" CssClass="collapse-item">Registration Form</asp:HyperLink>
+                            <asp:HyperLink ID="hyadmiform" runat="server" NavigateUrl="~/Admission.aspx" CssClass="collapse-item">New Admission Payment</asp:HyperLink>
+                            <asp:HyperLink ID="hystudlist" runat="server" NavigateUrl="~/StudentList.aspx" CssClass="collapse-item">Student List</asp:HyperLink>
+                            <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Parents_Details.aspx" CssClass="collapse-item">Parents List</asp:HyperLink>
+                            <asp:HyperLink ID="hystudlistbyclass" runat="server" NavigateUrl="~/Student_List_by_Class.aspx" CssClass="collapse-item">Student List by Class</asp:HyperLink>
+                            <asp:HyperLink ID="hyadmanabyyr" runat="server" NavigateUrl="~/Admission_Analysis.aspx" CssClass="collapse-item">Admission Analysis by Year</asp:HyperLink>
+                            <asp:HyperLink ID="hyadmbyterm" runat="server" NavigateUrl="~/New_Admission_by_term.aspx" CssClass="collapse-item">Admission List by Term</asp:HyperLink>
+                            <asp:HyperLink ID="hyadmilistbyyr" runat="server" NavigateUrl="~/New_Admission_by_year.aspx" CssClass="collapse-item">Admission List by Year</asp:HyperLink>
+                            <asp:HyperLink ID="hyeitphtot" runat="server" NavigateUrl="~/Edit_Photo.aspx" CssClass="collapse-item">Edit Leaner's Photo</asp:HyperLink>
+                            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Continue_Students.aspx" CssClass="collapse-item">Add Continuous Students</asp:HyperLink>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#acam"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-book"></i>
+                        <span style="color: yellow" id="ac">Academics</span>
+                    </a>
+                    <div id="acam" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header" id="acp">Academics Process:</h6>
+                            <asp:HyperLink ID="hymrkatten" runat="server" NavigateUrl="~/Attendance.aspx" CssClass="collapse-item">Mark Attendance</asp:HyperLink>
+                            <asp:HyperLink ID="hyclsass" runat="server" NavigateUrl="~/Class_Assesment_Sheet.aspx" CssClass="collapse-item">Class Assessment</asp:HyperLink>
+                            <asp:HyperLink ID="hypclstest" runat="server" NavigateUrl="~/Class_Test.aspx" CssClass="collapse-item">Class Test</asp:HyperLink>
+                            <asp:HyperLink ID="hyphomewrk" runat="server" NavigateUrl="~/Project_Home_Work.aspx" CssClass="collapse-item">Home Work</asp:HyperLink>
+                            <asp:HyperLink ID="hypeams" runat="server" NavigateUrl="~/Exams_Sheet.aspx" CssClass="collapse-item">Exams Sheet</asp:HyperLink>
+                            <asp:HyperLink ID="hypcont" runat="server" NavigateUrl="~/Assesment_Sheet.aspx" CssClass="collapse-item">Continuous Assessment Sheet</asp:HyperLink>
+                            <asp:HyperLink ID="hypindivi" runat="server" NavigateUrl="~/Student_Report_Card.aspx" CssClass="collapse-item">Report Card</asp:HyperLink>
+                            <%--<asp:HyperLink ID="hypgrprep" runat="server" NavigateUrl="~/Students_Report_by_Class.aspx" CssClass="collapse-item">Group Report By Class</asp:HyperLink>--%>
+                            <asp:HyperLink ID="hypupload" runat="server" NavigateUrl="~/Class_Activities.aspx" CssClass="collapse-item">Upload Class Activities</asp:HyperLink>
+                            <asp:HyperLink ID="hypcontent" runat="server" NavigateUrl="~/Countinous_Sheet.aspx" CssClass="collapse-item">Cont. Ass. Entry</asp:HyperLink>
+                            <%-- <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Student_Registration.aspx" CssClass="collapse-item">Crystal Report</asp:HyperLink>--%>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#staff"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-user"></i>
+                        <span style="color: yellow" id="sm">Staff Management</span>
+                    </a>
+                    <div id="staff" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header" id="smp">Staffing Process:</h6>
+                            <asp:HyperLink ID="hystfform" runat="server" NavigateUrl="~/Staff_Form.aspx" CssClass="collapse-item">Staff Form</asp:HyperLink>
+                            <asp:HyperLink ID="hystflst" runat="server" NavigateUrl="~/Staff_List.aspx" CssClass="collapse-item">Staff List</asp:HyperLink>
+                            <asp:HyperLink ID="hypssnit" runat="server" NavigateUrl="~/Deduction_Setup.aspx" CssClass="collapse-item">Ssnit, PF, TUC</asp:HyperLink>
+                            <asp:HyperLink ID="hypincome" runat="server" NavigateUrl="~/Income_Tax_Entry.aspx" CssClass="collapse-item">Income Tax Entry Level</asp:HyperLink>
+                            <asp:HyperLink ID="hypyrlproc" runat="server" NavigateUrl="~/Pay_roll_process.aspx" CssClass="collapse-item">Pay Roll Process</asp:HyperLink>
+                            <asp:HyperLink ID="hypyroll" runat="server" NavigateUrl="~/Pay_roll.aspx" CssClass="collapse-item">Pay Roll</asp:HyperLink>
+                            <asp:HyperLink ID="hyppayslip" runat="server" NavigateUrl="~/PaySlip.aspx" CssClass="collapse-item">Pay Slip</asp:HyperLink>
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Edit_Staff_Foto.aspx" CssClass="collapse-item">Edit staff Photo</asp:HyperLink>
+                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Staff_Email_SMS.aspx" CssClass="collapse-item">Staff SMS & Email</asp:HyperLink>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#acct"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-money-bill-alt"></i>
+                        <span style="color: yellow" id="act">Accounting</span>
+                    </a>
+                    <div id="acct" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header" id="actp">Accounting Process:</h6>
+                            <asp:HyperLink ID="hychtofacc" runat="server" NavigateUrl="~/ChartofAccount.aspx" CssClass="collapse-item">Chart of Account</asp:HyperLink>
+                            <asp:HyperLink ID="hycntlst" runat="server" NavigateUrl="~/Canteen_List.aspx" CssClass="collapse-item">Canteen Fee List</asp:HyperLink>
+                            <asp:HyperLink ID="hyschstm" runat="server" NavigateUrl="~/School_Fees_statemen.aspx" CssClass="collapse-item">School Fees Statement</asp:HyperLink>
+                            <asp:HyperLink ID="hyjurent" runat="server" NavigateUrl="~/Journal_Entries.aspx" CssClass="collapse-item">Journal Entries</asp:HyperLink>
+                            <asp:HyperLink ID="hyrecschfe" runat="server" NavigateUrl="~/Receive_Payment.aspx" CssClass="collapse-item">Receive Payments</asp:HyperLink>
+                            <%--                      <asp:HyperLink ID="hyrecadmi" runat="server" NavigateUrl="~/Admission_Balance.aspx" CssClass="collapse-item">Receive Payments (Adm. Fee)</asp:HyperLink>--%>
+                            <asp:HyperLink ID="hyschslst" runat="server" NavigateUrl="~/School_Fees_List.aspx" CssClass="collapse-item">School Fees List</asp:HyperLink>
+                            <asp:HyperLink ID="hydeblist" runat="server" NavigateUrl="~/Debtors_List.aspx" CssClass="collapse-item">Debtors List</asp:HyperLink>
+                            <%-- <asp:HyperLink ID="hypaybils" runat="server" NavigateUrl="~/PayBills.aspx" CssClass="collapse-item">Pay Bills</asp:HyperLink>--%>
+                            <asp:HyperLink ID="hyedschstm" runat="server" NavigateUrl="~/Edit_Fees.aspx" CssClass="collapse-item">Edit Sch. Fees</asp:HyperLink>
+                        </div>
+
+                    </div>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#bnk"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fa fa-university"></i>
+                        <span style="color: yellow" id="bk">Banking</span>
+                    </a>
+                    <div id="bnk" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header" id="bkp">Banking Process:</h6>
+                            <asp:HyperLink ID="hytrns" runat="server" NavigateUrl="~/Bank_Transaction.aspx" CssClass="collapse-item">Transactions</asp:HyperLink>
+                            <asp:HyperLink ID="hydpst" runat="server" NavigateUrl="~/Deposite.aspx" CssClass="collapse-item">Deposit</asp:HyperLink>
+                            <asp:HyperLink ID="hywthd" runat="server" NavigateUrl="~/Withdrawal.aspx" CssClass="collapse-item">Withdrawal</asp:HyperLink>
+                            <asp:HyperLink ID="hytrnsf" runat="server" NavigateUrl="~/Transfers.aspx" CssClass="collapse-item">Transfers</asp:HyperLink>
+                            <asp:HyperLink ID="hybnkstm" runat="server" NavigateUrl="~/Bank_Statement.aspx" CssClass="collapse-item">Bank Statement</asp:HyperLink>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#rep"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-money-bill-alt"></i>
+                        <span style="color: yellow" id="fr">Financial Report</span>
+                    </a>
+                    <div id="rep" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header" id="frp">Reporting Process:</h6>
+                            <asp:HyperLink ID="hytbl" runat="server" NavigateUrl="~/Trail_Balance.aspx" CssClass="collapse-item">Trail Balance</asp:HyperLink>
+                            <asp:HyperLink ID="hypls" runat="server" NavigateUrl="~/ProfitLoss.aspx" CssClass="collapse-item">Profit & Loss</asp:HyperLink>
+                            <asp:HyperLink ID="hybalsht" runat="server" NavigateUrl="~/BalanceSheet.aspx" CssClass="collapse-item">Balance Sheet</asp:HyperLink>
+                            <asp:HyperLink ID="hychsflw" runat="server" NavigateUrl="~/CashFlow.aspx" CssClass="collapse-item">Cash Flow</asp:HyperLink>
+                            <asp:HyperLink ID="hychgequ" runat="server" NavigateUrl="~/ChangesInEquity.aspx" CssClass="collapse-item">Changes in Equity</asp:HyperLink>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span style="color: yellow" id="sc">School Settings</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header" id="cs">Custom Settings:</h6>
+                            <asp:HyperLink ID="hyschinfo" runat="server" NavigateUrl="~/Company.aspx" CssClass="collapse-item">School Info Settings</asp:HyperLink>
+                            <asp:HyperLink ID="hymsgcnt" runat="server" NavigateUrl="~/Message_Center.aspx" CssClass="collapse-item">Message Center (Bulk & Single)</asp:HyperLink>
+                            <asp:HyperLink ID="hyacadar" runat="server" NavigateUrl="~/School_Calendar.aspx" CssClass="collapse-item">Academic Calendar</asp:HyperLink>
+                            <asp:HyperLink ID="hyadfebils" runat="server" NavigateUrl="~/Fees_Bills_List.aspx" CssClass="collapse-item">Add Fees & Bills Settings</asp:HyperLink>
+                            <asp:HyperLink ID="hylrnatres" runat="server" NavigateUrl="~/Add_Debt.aspx" CssClass="collapse-item">Add Learners Bill</asp:HyperLink>
+                            <asp:HyperLink ID="hyrmvclsdup" runat="server" NavigateUrl="~/Check_Class_Duplicate.aspx" CssClass="collapse-item">Check for Duplicate</asp:HyperLink>
+                            <asp:HyperLink ID="hyadcls" runat="server" NavigateUrl="~/Class_List.aspx" CssClass="collapse-item">Add Class</asp:HyperLink>
+                            <asp:HyperLink ID="hyedcurcls" runat="server" NavigateUrl="~/Edit_leatners_Current_Class.aspx" CssClass="collapse-item">Update  Learner Current Class</asp:HyperLink>
+                            <asp:HyperLink ID="adsubjt" runat="server" NavigateUrl="~/Add_Subjects.aspx" CssClass="collapse-item">Add Subject</asp:HyperLink>
+                            <asp:HyperLink ID="hyuslst" runat="server" NavigateUrl="~/Users.aspx" CssClass="collapse-item">Users List</asp:HyperLink>
+                            <asp:HyperLink ID="hyuscntrl" runat="server" NavigateUrl="~/User_Control.aspx" CssClass="collapse-item">User Control</asp:HyperLink>
+                            <asp:HyperLink ID="hypromo" runat="server" NavigateUrl="~/Promotion.aspx" CssClass="collapse-item">Student Promotions</asp:HyperLink>
+                            <asp:HyperLink ID="hystuacti" runat="server" NavigateUrl="~/Active_Students.aspx" CssClass="collapse-item">Student Activation</asp:HyperLink>
+                            <asp:HyperLink ID="hypagesett" runat="server" NavigateUrl="~/Page_Settings.aspx" CssClass="collapse-item">Page Settings</asp:HyperLink>
+                            <%--<asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/WebForm1.aspx" CssClass="collapse-item">My Test</asp:HyperLink>--%>
+                        </div>
+                    </div>
+                </li>
+
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle" type="button"></button>
+                </div>
+
+                <!-- Sidebar Message -->
+                <div class="sidebar-card d-none d-lg-flex">
+                    <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                    <p class="text-center mb-2"><strong>Top-High I.T Solutions</strong> visit our website for more info</p>
+                    <a class="btn btn-success btn-sm" href="http://tophighitsolutions.com/">Click me</a>
+                </div>
+            </ul>
+            <!-- End of Sidebar -->
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3" type="button">
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+                        <!-- Topbar Search -->
+                        <div
+                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <%--       <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                    aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                            </div>--%>
+                        </div>
+
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
+
+                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                    aria-labelledby="searchDropdown">
+                                    <div class="form-inline mr-auto w-100 navbar-search">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-light border-0 small"
+                                                placeholder="Search for..." aria-label="Search"
+                                                aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- Nav Item - Alerts -->
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-bell fa-fw"></i>
+                                    <!-- Counter - Alerts -->
+                                    <span class="badge badge-danger badge-counter">3+</span>
+                                </a>
+                                <!-- Dropdown - Alerts -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="alertsDropdown">
+                                    <h6 class="dropdown-header">Alerts Center
+                                    </h6>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-primary">
+                                                <i class="fas fa-file-alt text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="small text-gray-500">December 12, 2019</div>
+                                            <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-success">
+                                                <i class="fas fa-donate text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="small text-gray-500">December 7, 2019</div>
+                                            $290.29 has been deposited into your account!
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="mr-3">
+                                            <div class="icon-circle bg-warning">
+                                                <i class="fas fa-exclamation-triangle text-white"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="small text-gray-500">December 2, 2019</div>
+                                            Spending Alert: We've noticed unusually high spending for your account.
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                </div>
+                            </li>
+
+                            <!-- Nav Item - Messages -->
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-envelope fa-fw"></i>
+                                    <!-- Counter - Messages -->
+                                    <span class="badge badge-danger badge-counter">7</span>
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="messagesDropdown">
+                                    <h6 class="dropdown-header">Message Center
+                                    </h6>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="dropdown-list-image mr-3">
+                                            <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                                alt="...">
+                                            <div class="status-indicator bg-success"></div>
+                                        </div>
+                                        <div class="font-weight-bold">
+                                            <div class="text-truncate">
+                                                Hi there! I am wondering if you can help me with a
+                                            problem I've been having.
+                                            </div>
+                                            <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="dropdown-list-image mr-3">
+                                            <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                                alt="...">
+                                            <div class="status-indicator"></div>
+                                        </div>
+                                        <div>
+                                            <div class="text-truncate">
+                                                I have the photos that you ordered last month, how
+                                            would you like them sent to you?
+                                            </div>
+                                            <div class="small text-gray-500">Jae Chun · 1d</div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="dropdown-list-image mr-3">
+                                            <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                                alt="...">
+                                            <div class="status-indicator bg-warning"></div>
+                                        </div>
+                                        <div>
+                                            <div class="text-truncate">
+                                                Last month's report looks great, I am very happy with
+                                            the progress so far, keep up the good work!
+                                            </div>
+                                            <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="dropdown-list-image mr-3">
+                                            <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                                alt="...">
+                                            <div class="status-indicator bg-success"></div>
+                                        </div>
+                                        <div>
+                                            <div class="text-truncate">
+                                                Am I a good boy? The reason I ask is because someone
+                                            told me that people say this to all dogs, even if they aren't good...
+                                            </div>
+                                            <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                                        </div>
+                                    </a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                </div>
+                            </li>
+
+                            <div class="topbar-divider d-none d-sm-block"></div>
+
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                        <asp:Label ID="lbluse" runat="server" class="col-sm-2 col-form-label" ForeColor="Black"></asp:Label></span>
+                                    <asp:Image ID="imgstudpic" runat="server" Width="50px" Height="50px" class="rounded img-center" />
+                                </a>
+
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profile
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Settings
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Activity Log
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+                    <!-- End of Topbar -->
+
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
+
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+
+                    </div>
+
+                </div>
+
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2021</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="Logout.aspx">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+
+        <!-- Page level plugins -->
+        <script src="vendor/chart.js/Chart.min.js"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-pie-demo.js"></script>
+
+
+        <asp:HiddenField ID="txtregs" runat="server" />
+
+        <asp:HiddenField ID="txtnewadmi" runat="server" />
+
+        <asp:HiddenField ID="txtstudlist" runat="server" />
+
+        <asp:HiddenField ID="txtstudlistbyclass" runat="server" />
+
+        <asp:HiddenField ID="txtadmianayr" runat="server" />
+
+        <asp:HiddenField ID="txtadmibyterm" runat="server" />
+
+        <asp:HiddenField ID="txtadmilistbyyr" runat="server" />
+
+        <asp:HiddenField ID="txteditphoto" runat="server" />
+
+        <%--        'Academics--%>
+
+        <asp:HiddenField ID="txtattendance" runat="server" />
+
+        <asp:HiddenField ID="txtclsasssheet" runat="server" />
+
+        <asp:HiddenField ID="txtclstext" runat="server" />
+
+        <asp:HiddenField ID="txthmwrk" runat="server" />
+
+        <asp:HiddenField ID="txtexms" runat="server" />
+
+        <asp:HiddenField ID="txtcont" runat="server" />
+
+        <asp:HiddenField ID="txtind" runat="server" />
+
+        <asp:HiddenField ID="txtgroprep" runat="server" />
+
+        <asp:HiddenField ID="txtclsactivity" runat="server" />
+
+        <asp:HiddenField ID="txtcontent" runat="server" />
+
+        <%-- Staff Management--%>
+
+        <asp:HiddenField ID="txtstfform" runat="server" />
+
+        <asp:HiddenField ID="txtstflist" runat="server" />
+
+        <asp:HiddenField ID="txtsnit" runat="server" />
+
+        <asp:HiddenField ID="txtincome" runat="server" />
+
+        <asp:HiddenField ID="txtprlpros" runat="server" />
+
+        <asp:HiddenField ID="txtpayroll" runat="server" />
+
+        <asp:HiddenField ID="txtslip" runat="server" />
+
+        <%--Accounting--%>
+
+        <asp:HiddenField ID="txtchtacc" runat="server" />
+
+        <asp:HiddenField ID="txtcntlist" runat="server" />
+
+        <asp:HiddenField ID="txtschfeestam" runat="server" />
+
+        <asp:HiddenField ID="txtjrnent" runat="server" />
+
+        <asp:HiddenField ID="txtrecschpay" runat="server" />
+
+        <asp:HiddenField ID="txtrecadmpay" runat="server" />
+
+        <asp:HiddenField ID="txtschfeelst" runat="server" />
+
+        <asp:HiddenField ID="txtdeblst" runat="server" />
+
+        <asp:HiddenField ID="txtpaybills" runat="server" />
+
+        <asp:HiddenField ID="txteditschfee" runat="server" />
+
+        <asp:HiddenField ID="txtsetup" runat="server" />
+
+        <asp:HiddenField ID="txtdepsit" runat="server" />
+
+        <asp:HiddenField ID="txtwtdrw" runat="server" />
+
+        <asp:HiddenField ID="txttrnsf" runat="server" />
+
+        <asp:HiddenField ID="txtbnkstam" runat="server" />
+
+        <asp:HiddenField ID="txttb" runat="server" />
+
+        <asp:HiddenField ID="txtpl" runat="server" />
+
+        <asp:HiddenField ID="txtbls" runat="server" />
+
+        <asp:HiddenField ID="txtchflw" runat="server" />
+
+        <asp:HiddenField ID="txtchngequ" runat="server" />
+
+        <asp:HiddenField ID="txtschinfo" runat="server" />
+
+        <asp:HiddenField ID="txtmsgcnt" runat="server" />
+
+        <asp:HiddenField ID="txtacadar" runat="server" />
+
+        <asp:HiddenField ID="txtadfeesbill" runat="server" />
+
+        <asp:HiddenField ID="txtlnrares" runat="server" />
+
+        <asp:HiddenField ID="txtadclas" runat="server" />
+
+        <asp:HiddenField ID="txtedtcurclass" runat="server" />
+
+        <asp:HiddenField ID="txtadsubjt" runat="server" />
+
+        <asp:HiddenField ID="txtuserlst" runat="server" />
+
+        <asp:HiddenField ID="txtacscontrl" runat="server" />
+
+        <asp:HiddenField ID="txtpromo" runat="server" />
+
+        <asp:HiddenField ID="txtactive" runat="server" />
+
+        <asp:HiddenField ID="txtpagsett" runat="server" />
+
+        <asp:HiddenField ID="txtcompid" runat="server" />
+
+        <asp:HiddenField ID="txtfont" runat="server" />
+
+        <asp:HiddenField ID="txtid" runat="server" />
+
+        <script type="text/javascript">
+            var fontstyle = $.trim($('#<%=txtfont.ClientID %>').val());
+            var seconds = 3;
+            function countdown() {
+                seconds = seconds - 1;
+                if (seconds < 0) {
+                    PageMethods.name(function (response, userContext, methodName) {
+                        document.getElementById("hd").style.fontFamily = "Algerian";
+                    });
+                } else {
+                    document.getElementById("hd").style.fontFamily = fontstyle;
+                    document.getElementById("form1").style.fontFamily = fontstyle;
+
+                    window.setTimeout("countdown()", 1000);
+                }
+            }
+            countdown();
+        </script>
+
+
+
+    </form>
+
+
+</body>
+
+
+
+
+</html>

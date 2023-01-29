@@ -1,0 +1,211 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Admission.aspx.vb" Inherits="Top_High_Schools.Admission" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+   <script type="text/javascript">
+       function sum() {
+           var txt1 = document.getElementById('<%= txttuition.ClientID %>').value;
+            var txt2 = document.getElementById('<%= txtadmission.ClientID %>').value;
+            var txt3 = document.getElementById('<%= txtcanteen.ClientID %>').value;
+            var txt4 = document.getElementById('<%= txtbusfee.ClientID %>').value;
+            var txt5 = document.getElementById('<%= txtfirstaid.ClientID %>').value;
+            var txt6 = document.getElementById('<%= txtpta.ClientID %>').value;
+            var txt7 = document.getElementById('<%= txtothers.ClientID %>').value;
+            var result = parseFloat(txt1) + parseFloat(txt2) + parseFloat(txt3) + parseFloat(txt4) + parseFloat(txt5) + parseFloat(txt6) + parseFloat(txt7);
+            if (!isNaN(result)) {
+                document.getElementById('<%= txttotals.ClientID %>').value = result;
+           }
+       }
+
+       function paysum() {
+           var txt1 = document.getElementById('<%= txttotals.ClientID %>').value;
+           var txt3 = document.getElementById('<%= txtadmfee.ClientID %>').value;
+            var result = parseFloat(txt1) - parseFloat(txt3);
+            if (!isNaN(result)) {
+               document.getElementById('<%= txtbaldue.ClientID %>').value = result;
+           }
+       }
+
+   </script>
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 34px !important;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #ccc !important;
+            border-radius: 0px !important;
+        }
+    </style>
+
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+        <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h4 mb-0 text-gray-800">Admission & Payments</h4>
+
+    </div>
+
+    <!-- Input rows -->
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Payment Form</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group row">
+                        
+                        <div class="col-sm-5">
+                            <label for="inputEmail3">Class</label>
+                            <dx:ASPxComboBox ID="ddlClass" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -" AutoPostBack="True" requide="true"></dx:ASPxComboBox>
+                        </div>
+                        
+                        <div class="col-sm-5">
+                            <label for="inputEmail3">Student</label>
+                            <dx:ASPxComboBox ID="ddlStudent" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -" AutoPostBack="True" requide="true"></dx:ASPxComboBox>
+                        </div>
+                        <asp:TextBox ID="txtclassid" runat="server" Visible="false"></asp:TextBox>
+                         <asp:TextBox ID="txttype" runat="server" Visible="false"></asp:TextBox>
+                        <asp:TextBox ID="txtstudid" runat="server" Visible="false"></asp:TextBox>
+                    </div>
+                    <div class="form-group row">
+                        
+                        <div class="col-sm-3">
+                            <label for="inputEmail3">Tuition Fee</label>
+                            <asp:TextBox runat="server" Text="0" CssClass="form-control" ID="txttuition" onkeyup="sum()"></asp:TextBox>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <label for="inputPassword3">Admission Fee</label>
+                            <asp:TextBox runat="server" Text="0" CssClass="form-control" ID="txtadmission" onkeyup="sum()"></asp:TextBox>
+                        </div>
+                   
+                        <div class="col-sm-3">
+                            <label for="inputPassword3">Canteen Fee</label>
+                            <asp:TextBox runat="server" Text="0" CssClass="form-control" ID="txtcanteen" onkeyup="sum()"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                       
+                        <div class="col-sm-3">
+                             <label for="inputPassword3">Bus Fee</label>
+                            <asp:TextBox runat="server" Text="0" CssClass="form-control" ID="txtbusfee" onkeyup="sum()"></asp:TextBox>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <label for="inputPassword3">First AID</label>
+                            <asp:TextBox runat="server" Text="0" CssClass="form-control" ID="txtfirstaid" onkeyup="sum()"></asp:TextBox>
+                        </div>
+                   
+                        <div class="col-sm-3">
+                            <label for="inputPassword3">P.T.A</label>
+                            <asp:TextBox runat="server" Text="0" CssClass="form-control" ID="txtpta" onkeyup="sum()"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        
+                        <div class="col-sm-3">
+                            <label for="inputPassword3">Others</label>
+                            <asp:TextBox runat="server" Text="0" CssClass="form-control" ID="txtothers" onkeyup="sum()"></asp:TextBox>
+                        </div>
+
+                         <div class="col-sm-3">
+                             <label for="inputPassword3">Totals</label>
+                            <asp:TextBox ID="txttotals" runat="server" CssClass="form-control" DisplayFormatString="N2" Text="0.00" ReadOnly="true" BackColor="White"></asp:TextBox>
+                        </div>
+                        
+                        <div class="col-sm-3">
+                            <label for="inputPassword3">Date</label>
+                            <asp:TextBox ID="admidate" runat="server" TextMode="Date" required="true" CssClass="form-control"></asp:TextBox>
+                        </div>
+
+                    </div>
+
+                    <hr />
+
+                    <div class="form-group row">
+                        
+          
+                           <asp:TextBox ID="txtschfees" runat="server" CssClass="form-control" DisplayFormatString="N2" Text="0.00" Visible="false" onkeyup="paysum()"></asp:TextBox>
+         
+
+                        <div class="col-sm-3">
+                            <label for="inputPassword3">Pay Admission Fee</label>
+                           <asp:TextBox ID="txtadmfee" runat="server" CssClass="form-control" DisplayFormatString="N2" Text="0.00" onkeyup="paysum()"></asp:TextBox>
+                        </div>
+
+                       <div class="col-sm-3">
+                            <label for="inputPassword3">Balance Due</label>
+                           <asp:TextBox ID="txtbaldue" runat="server" CssClass="form-control" DisplayFormatString="N2" Text="0.00" ReadOnly ="true" BackColor ="White"></asp:TextBox>
+                        </div>
+
+                         <div class="col-sm-3">
+                             <label for="inputPassword3">Academic Year</label>
+                            <dx:ASPxComboBox ID="ddlacayear" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -"></dx:ASPxComboBox>
+                        </div>
+
+                         <div class="col-sm-3">
+                             <label for="inputPassword3">Academic Term</label>
+                            <dx:ASPxComboBox ID="ddlacaterm" runat="server" ValueType="System.String" CssClass="form-control" NullText=" - Select -"></dx:ASPxComboBox>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <asp:Button ID="btnsave" runat="server" Text="Save & Print" class="btn btn-primary" />
+                    <asp:Button ID="btncancel" runat="server" Text="Cancel" class="btn btn-success float-right" />
+                </div>
+                <!-- /.card-footer -->
+            </div>
+            <asp:TextBox ID="txtCashAcc" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtReceAcc" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtAdmAcc" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtSchAcc" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtlinkcode" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtusers" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txttimer" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtlocation" runat="server" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtcomp" Text="Test Comp" runat="server" Visible="false"></asp:TextBox>
+
+        </div>
+
+    </div>
+
+    <br />
+
+</asp:Content>

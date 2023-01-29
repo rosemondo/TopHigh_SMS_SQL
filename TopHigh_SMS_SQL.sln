@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TopHigh_SMS_SQL", "Top_High_Schools\TopHigh_SMS_SQL.vbproj", "{E5D3EFB6-D510-44CD-977F-B00ED6DAFEE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5D3EFB6-D510-44CD-977F-B00ED6DAFEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5D3EFB6-D510-44CD-977F-B00ED6DAFEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5D3EFB6-D510-44CD-977F-B00ED6DAFEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5D3EFB6-D510-44CD-977F-B00ED6DAFEE7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5233C2BA-8657-4DD5-B04F-CD9F34DC5F05}
+	EndGlobalSection
+EndGlobal

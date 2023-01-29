@@ -1,0 +1,222 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Edit_Employees.aspx.vb" Inherits="Top_High_Schools.Edit_Employees" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+         .capitalize {
+            text-transform: capitalize;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function ShowImagePreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#<%=ImgPrv.ClientID%>').prop('src', e.target.result)
+                        .width(200)
+                        .height(200);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h4 mb-0 text-gray-800">Employees Info</h4>
+        <a href="Staff_List.aspx" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fa fa-list fa-sm text-white-50"></i>Employee List</a>
+    </div>
+
+    <!-- Input rows -->
+    <!--Row with two equal columns-->
+    <div class="row">
+        <div class="col-md-9">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Staff Form</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">First Name</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" CssClass="form-control capitalize" ID="txtfirstname" placeholder="First Name" required="true"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Middle Name</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" CssClass="form-control capitalize" ID="txtmidname" placeholder="Middle Name"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Last Name</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" CssClass="form-control capitalize" ID="txtlastname" placeholder="Last name" required="true"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                         <label for="inputPassword3" class="col-sm-2 col-form-label">Date of Birth</label>
+                        <div class="col-sm-4">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtdob" TextMode="Date" required="true"></asp:TextBox>
+                        </div>
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Gender</label>
+                        <div class="col-sm-6">
+                            <asp:RadioButton ID="rbomale" runat="server" Text="Male" TextAlign="Right" Style="padding: 5px" AutoPostBack="True" />
+                            <asp:RadioButton ID="rbofemale" runat="server" Text="Female" TextAlign="Right" Style="padding: 5px" AutoPostBack="True" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">ID Type</label>
+                        <div class="col-sm-3">
+                             <dx:ASPxComboBox ID="ddlidtype" runat="server" CssClass="form-control" NullText="- Select -">
+                                <Items>
+                                    <dx:ListEditItem Text="Passport" Value="Passport" />
+                                    <dx:ListEditItem Text="Voter ID" Value="Voter ID" />
+                                    <dx:ListEditItem Text="Ghana Card" Value="Ghana Card" />
+                                    <dx:ListEditItem Text="NHIS" Value="NHIS" />
+                                    <dx:ListEditItem Text="Drivers License" Value="Drivers License" />
+                                </Items>
+                            </dx:ASPxComboBox>
+                        </div>
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">ID Number</label>
+                        <div class="col-sm-3">
+                            <asp:TextBox ID="txtidnum" runat="server" CssClass="form-control capitalize" placeholder="ID Number"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card card-info">
+                <div class="card-header">
+                    <h6 class="card-title">Staff Photo</h6>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <fieldset style="width: 200px;">
+                        <div style="text-align: center;">
+                            <asp:Image ID="ImgPrv" Height="200" Width="200" runat="server" /><br />
+                            <asp:FileUpload ID="flupImage" runat="server" onchange="ShowImagePreview(this);" />
+                        </div>
+                    </fieldset>
+
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                </div>
+                <!-- /.card-footer -->
+
+            </div>
+
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Staff Address</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">House Address</label>
+                        <div class="col-sm-4">
+                            <asp:TextBox runat="server" CssClass="form-control capitalize" ID="txthouseaddress" placeholder="House Address" required="true"></asp:TextBox>
+                        </div>
+                        <label for="inputPassword3" class="col-sm-1 col-form-label">City</label>
+                        <div class="col-sm-2">
+                            <asp:TextBox runat="server" CssClass="form-control capitalize" ID="txtcity" placeholder="City" required="true"></asp:TextBox>
+                        </div>
+                        <label for="inputPassword3" class="col-sm-1 col-form-label">Country</label>
+                        <div class="col-sm-2">
+                            <dx:ASPxComboBox ID="ddlcountries" runat="server" ValueType="System.String" CssClass="form-control" NullText="- Select -"></dx:ASPxComboBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Mobile Number</label>
+                        <div class="col-sm-4">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtmobile" placeholder="Mobile #" required="true"></asp:TextBox>
+                        </div>
+                        <label for="inputPassword3" class="col-sm-1 col-form-label">E-mail</label>
+                        <div class="col-sm-5">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtemail" placeholder="E-mail Address"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Next of Kin</label>
+                        <div class="col-sm-10">
+                            <asp:TextBox runat="server" CssClass="form-control capitalize" ID="txtnextofkin" placeholder="Next of Kin"></asp:TextBox>
+                        </div>
+                    </div>
+                       <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Basic Salary</label>
+                        <div class="col-sm-4">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtsalary" Text="0.00"></asp:TextBox>
+                        </div>
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Allowances</label>
+                        <div class="col-sm-4">
+                            <asp:TextBox runat="server" CssClass="form-control" ID="txtallowance" Text="0.00"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <asp:Button ID="btnsave" runat="server" Text="Save" class="btn btn-primary" />
+                    <asp:Button ID="btncancel" runat="server" Text="Cancel" class="btn btn-success float-right" />
+                </div>
+                <!-- /.card-footer -->
+
+            </div>
+            <!-- /.card -->
+
+        </div>
+        <asp:TextBox ID="txtdateyear" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="txtdays" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="txtmonths" runat="server" Visible="false"></asp:TextBox>
+        <asp:TextBox ID="txtmyID" runat="server" Visible="false" BackColor="#FFFF99"></asp:TextBox>
+        <asp:TextBox ID="txtgender" runat="server" Visible="False"></asp:TextBox>
+         <asp:TextBox ID="txtid" runat="server" Visible="False"></asp:TextBox>
+        <asp:Label ID="lblImageName" runat="server" Text="" Visible="false"></asp:Label>
+        <asp:Label ID="lblid" runat="server" Text="" Visible="false"></asp:Label>
+    </div>
+    <br />
+
+
+</asp:Content>

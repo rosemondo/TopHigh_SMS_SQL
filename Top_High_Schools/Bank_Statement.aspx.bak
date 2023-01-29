@@ -1,0 +1,197 @@
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Bank_Statement.aspx.vb" Inherits="Top_High_Schools.Bank_Statement" %>
+
+<%@ Register Assembly="DevExpress.Web.v21.2" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+
+    <link href="plugins/fontawesome-free/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="css/jquery-ui.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .card-header {
+            background-color: dodgerblue;
+        }
+
+        .card-title {
+            color: white;
+        }
+
+        .roundimage {
+            border-radius: 50%;
+        }
+
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .capitalize {
+            text-transform: capitalize;
+        }
+    </style>
+
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h4 mb-0 text-gray-800">Bank Statement</h4>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                    <h5 class="card-title">Statement</h5>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            <label for="inputEmail3">A/c Name</label>
+                            <asp:DropDownList ID="dplacname" runat="server" CssClass="form-control" AutoPostBack="True"></asp:DropDownList>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <label for="inputEmail3">Date From</label>
+                            <dx:ASPxDateEdit ID="ASPxDatefrom" runat="server" CssClass="form-control" DisplayFormatString="yyyy-MM-dd"></dx:ASPxDateEdit>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <label for="inputEmail3">Date To</label>
+                            <dx:ASPxDateEdit ID="ASPxDateto" runat="server" CssClass="form-control" DisplayFormatString="yyyy-MM-dd"></dx:ASPxDateEdit>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <dx:ASPxCheckBox ID="chkbydate" runat="server" Text="By Date"></dx:ASPxCheckBox>
+                            <dx:ASPxButton ID="btnsearch" runat="server" Text="Search"></dx:ASPxButton>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- /.card-body -->
+
+                <!-- /.card-footer -->
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <br />
+
+    <!-- Input rows -->
+    <!--Row with two equal columns-->
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+                <div class="card-header">
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+
+                <div class="card-body">
+
+                    <div>
+
+                        <asp:Repeater ID="rptstudent" runat="server">
+                            <HeaderTemplate>
+                                <table id="students" class="table table-bordered table-striped" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Accounts Name</th>
+                                            <th scope="col">Account #</th>
+                                            <th scope="col">Transaction</th>
+                                            <th scope="col">Debit</th>
+                                            <th scope="col">Credit</th>
+                                            <th scope="col">Balance</th>
+                                            <th scope="col">Bank</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="lblID" runat="server" Text='<%# Eval("depdate", "{0: yyyy-MM-dd}") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="lblName" runat="server" Text='<%# Eval("accname") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="lblODB" runat="server" Text='<%# Eval("accnum") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="lblGender" runat="server" Text='<%# Eval("details") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("debit", "{0:N2}") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("credit", "{0:N2}") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("Balance", "{0:N2}") %>' /></td>
+                                    <td>
+                                        <asp:Label ID="Label4" runat="server" Text='<%# Eval("bank") %>' /></td>
+                                </tr>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </tbody> </table>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                        <asp:TextBox ID="txtID" runat="server" Visible="False"></asp:TextBox>
+                    </div>
+
+                </div>
+                <div>
+                    <script src="lib/jquery/jquery.min.js"></script>
+                    <script src="plugins/datatables/jquery.dataTables.js"></script>
+                    <script src="js/dataTables.semanticui.min.js"></script>
+                    <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+                    <script src="js/responsive.semanticui.min.js"></script>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#students').DataTable({
+                                responsive: {
+                                    details: {
+                                        display: $.fn.dataTable.Responsive.display.modal({
+                                            header: function (row) {
+                                                var data = row.data();
+                                                return 'Details for ' + data[0] + ' ' + data[1];
+                                            }
+                                        }),
+                                        renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                                            tableClass: 'ui table'
+                                        })
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+
+                <!-- /.card-body -->
+                <div class="card-footer">
+                </div>
+                <!-- /.card-footer -->
+            </div>
+
+        </div>
+        <asp:TextBox ID="txtLastDatefrom" runat="server" Visible="false" DisplayDateFormat="yyyy-MM-dd"></asp:TextBox>
+        <asp:TextBox ID="txtLastDateto" runat="server" Visible="false" DisplayDateFormat="yyyy-MM-dd"></asp:TextBox>
+    </div>
+
+    <br />
+
+</asp:Content>

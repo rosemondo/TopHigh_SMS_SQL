@@ -1,0 +1,20 @@
+/* HTML5 and jQuery Super Simple Nav by Todd Motto @toddmotto - toddmotto.com */
+
+/* =============================================================================
+   Navigation Core Styles
+   ========================================================================== */
+   
+nav {float:left;}
+nav ul { margin-left:130px; padding:0px;}
+nav ul li {display:inline-block; float:left; line-height:30px; overflow:auto; font-family:Verdana, Geneva, sans-serif; font-size:10px; padding-right:10px; padding-left:10px;}
+nav ul li a:hover{ text-decoration:underline;}
+nav ul li a {padding-left:15px; padding-right:10px; display:inline-block; float:left; color:#444; font-family:Verdana, Geneva, sans-serif; font-size:10px;
+}
+
+
+nav ul li ul {position:absolute; width:180px; background:#fafafa; z-index:999999; margin-top:30px; margin-left:-15px; padding:0px;}
+nav ul li ul li {margin:0;padding:0;width:180px; display:inline-block; float:left;cursor:pointer;}
+nav ul li ul li a { display:inline-block; width:150px; float:left; color:#444;}
+nav ul li ul li:hover {background:#f2f2f2; display:inline-block; float:left; cursor:pointer;}
+nav ul li ul .fallback { display:inline-block; float:left;}
+nav ul li:hover ul.fallback {display:inline-block; float:left;}
